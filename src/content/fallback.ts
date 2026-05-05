@@ -1,0 +1,426 @@
+import type { Article, HomeContent, SiteSettings } from './types'
+import type { Locale } from '@/i18n/config'
+
+export const fallbackSettings: Record<Locale, SiteSettings> = {
+  de: {
+    companyName: 'Ostasien Energie',
+    contact: {
+      address: 'Shanghai, China',
+      email: 'hello@eastasiapower.example',
+      phone: '+86 21 1234 5678',
+    },
+    footerLinks: [
+      { href: '/#solutions', label: 'Lösungen' },
+      { href: '/#projects', label: 'Projekte' },
+      { href: '/news', label: 'Einblicke' },
+      { href: 'mailto:hello@eastasiapower.example', label: 'Kontakt' },
+    ],
+    navigation: [
+      { href: '/#solutions', label: 'Lösungen' },
+      { href: '/#projects', label: 'Projekte' },
+      { href: '/news', label: 'Einblicke' },
+      { href: '/#company', label: 'Unternehmen' },
+    ],
+    seo: {
+      description:
+        'Ostasien Energie entwickelt Speicher- und Netzflexibilitätslösungen für volatile Strommärkte.',
+      title: 'Ostasien Energie | Flexible Netze für volatile Märkte',
+    },
+    tagline: 'Speicher, Intelligenz und Kapital für zuverlässigere Stromsysteme.',
+  },
+  en: {
+    companyName: 'East Asia Power',
+    contact: {
+      address: 'Shanghai, China',
+      email: 'hello@eastasiapower.example',
+      phone: '+86 21 1234 5678',
+    },
+    footerLinks: [
+      { href: '/#solutions', label: 'Solutions' },
+      { href: '/#projects', label: 'Projects' },
+      { href: '/news', label: 'Insights' },
+      { href: 'mailto:hello@eastasiapower.example', label: 'Contact' },
+    ],
+    navigation: [
+      { href: '/#solutions', label: 'Solutions' },
+      { href: '/#projects', label: 'Projects' },
+      { href: '/news', label: 'Insights' },
+      { href: '/#company', label: 'Company' },
+    ],
+    seo: {
+      description:
+        'East Asia Power builds storage and grid flexibility systems for volatile power markets.',
+      title: 'East Asia Power | Flexible power systems for volatile grids',
+    },
+    tagline: 'Storage, intelligence, and capital for more reliable power systems.',
+  },
+  zh: {
+    companyName: '东亚电力',
+    contact: {
+      address: '中国上海',
+      email: 'hello@eastasiapower.example',
+      phone: '+86 21 1234 5678',
+    },
+    footerLinks: [
+      { href: '/#solutions', label: '解决方案' },
+      { href: '/#projects', label: '项目部署' },
+      { href: '/news', label: '洞察' },
+      { href: 'mailto:hello@eastasiapower.example', label: '联系' },
+    ],
+    navigation: [
+      { href: '/#solutions', label: '解决方案' },
+      { href: '/#projects', label: '项目部署' },
+      { href: '/news', label: '洞察' },
+      { href: '/#company', label: '公司' },
+    ],
+    seo: {
+      description: '东亚电力为波动电力市场建设储能与电网灵活性系统。',
+      title: '东亚电力 | 面向波动电网的灵活电力系统',
+    },
+    tagline: '用储能、智能运营和资本能力，建设更可靠的电力系统。',
+  },
+}
+
+export const fallbackHome: Record<Locale, HomeContent> = {
+  de: {
+    cta: {
+      body: 'Sprechen Sie mit unserem Team über Netzengpässe, Speicherstandorte und belastbare Umsetzungsmodelle.',
+      headline: 'Gemeinsam ein robusteres Netz bauen.',
+      href: 'mailto:hello@eastasiapower.example',
+      label: 'Kontakt aufnehmen',
+    },
+    deploymentHighlights: [
+      { label: 'MWh Stabilitätsleistung', value: '300' },
+      { label: 'Projekte in Asien', value: '75+' },
+    ],
+    hero: {
+      headline: 'Flexible Stromsysteme für volatile Netze bauen',
+      primaryCtaLabel: 'Kontakt aufnehmen',
+      secondaryCtaLabel: 'Einblicke lesen',
+      subline:
+        'Verteilte Speicher und intelligente Betriebsmodelle, die Strom zuverlässig, bezahlbar und sauber halten.',
+    },
+    locale: 'de',
+    proofPoints: [
+      { label: 'MWh Stabilitätsleistung', value: '300' },
+      { label: 'Projekte in Asien', value: '75+' },
+      { label: 'Marktleistung', value: 'Top 5%' },
+      { label: 'Systemverfügbarkeit', value: '99.8%' },
+    ],
+    statement: {
+      headline: 'Stromnachfrage steigt. Spannung steigt. Reserven werden knapper.',
+      lead:
+        'Elektrifizierung, KI-Lasten und erneuerbare Einspeisung bewegen sich schneller als Netz- und Erzeugungsausbau. Flexibilität wird zur kritischen Infrastruktur.',
+    },
+    storyItems: [
+      {
+        body: 'Industrielles Wachstum und Rechenzentren erhöhen Lastspitzen schneller, als Übertragungskapazitäten ausgebaut werden können.',
+        kind: 'challenge',
+        metricLabel: 'Netzauslastung',
+        metricUnit: 'GW',
+        metricValue: '82/90',
+        number: 1,
+        title: 'Nachfrage trifft Kapazitätsgrenzen',
+      },
+      {
+        body: 'Lokale Batteriespeicher entlasten Engpässe, stabilisieren Frequenz und liefern Kapazität genau dort, wo die Nachfrage entsteht.',
+        kind: 'solution',
+        metricLabel: 'Lokale Entlastung',
+        metricUnit: 'ms',
+        metricValue: '<1',
+        number: 1,
+        title: 'Lokale Speicher statt entfernte Theorie',
+      },
+      {
+        body: 'Preissignale springen zwischen Normalbetrieb und Knappheit. Ohne flexible Assets werden Kosten und Risiken systemisch.',
+        kind: 'challenge',
+        metricLabel: 'Knappheitspreis',
+        metricUnit: '/MWh',
+        metricValue: '450',
+        number: 2,
+        title: 'Volatile Marktmechanik',
+      },
+      {
+        body: 'Unsere Systeme laden bei niedrigen Preisen und liefern in Knappheitsfenstern, um Kosten, Lastspitzen und Ausfallrisiken zu dämpfen.',
+        kind: 'solution',
+        metricLabel: 'Peak-Shift',
+        metricUnit: 'MWh',
+        metricValue: '300',
+        number: 2,
+        title: 'Netzresponsive Speicher',
+      },
+      {
+        body: 'Solar- und Windleistung passen nicht immer zur Nachfrage. Ohne Speicher bleibt saubere Energie ungenutzt oder verliert Wert.',
+        kind: 'challenge',
+        metricLabel: 'Abregelungsrisiko',
+        metricUnit: '%',
+        metricValue: '39',
+        number: 3,
+        title: 'Erneuerbare ohne Flexibilität',
+      },
+      {
+        body: 'Speicher verschieben überschüssige saubere Energie in die Spitzenlast und machen variable Erzeugung planbarer und wertvoller.',
+        kind: 'solution',
+        metricLabel: 'Saubere Verschiebung',
+        metricUnit: 'h',
+        metricValue: '4',
+        number: 3,
+        title: 'Saubere Flexibilität',
+      },
+    ],
+  },
+  en: {
+    cta: {
+      body: 'Talk to our team about grid constraints, storage sites, and bankable delivery models.',
+      headline: 'Let’s build a more resilient grid together.',
+      href: 'mailto:hello@eastasiapower.example',
+      label: 'Get in touch',
+    },
+    deploymentHighlights: [
+      { label: 'MWh delivering stability', value: '300' },
+      { label: 'projects across Asia', value: '75+' },
+    ],
+    hero: {
+      headline: 'Building flexible power systems for volatile grids',
+      primaryCtaLabel: 'Get in touch',
+      secondaryCtaLabel: 'Read insights',
+      subline:
+        'Distributed energy storage and intelligent operations that keep power reliable, affordable, and clean across East Asia.',
+    },
+    locale: 'en',
+    proofPoints: [
+      { label: 'MWh delivering stability', value: '300' },
+      { label: 'projects across Asia', value: '75+' },
+      { label: 'market performance', value: 'Top 5%' },
+      { label: 'system availability', value: '99.8%' },
+    ],
+    statement: {
+      headline: 'Power demand is rising. Voltage is rising. Margins are squeezed.',
+      lead:
+        'Electrification, AI workloads, and renewable generation are moving faster than grid and generation buildout. Flexibility is becoming critical infrastructure.',
+    },
+    storyItems: [
+      {
+        body: 'Industrial growth and data centers are lifting peak demand faster than transmission capacity can be planned, permitted, and built.',
+        kind: 'challenge',
+        metricLabel: 'Grid capacity',
+        metricUnit: 'GW',
+        metricValue: '82/90',
+        number: 1,
+        title: 'Demand growth meets capacity limits',
+      },
+      {
+        body: 'Local battery systems relieve congestion, stabilize frequency, and deliver capacity near the demand pockets that need it most.',
+        kind: 'solution',
+        metricLabel: 'Local response',
+        metricUnit: 'ms',
+        metricValue: '<1',
+        number: 1,
+        title: 'Local storage instead of remote theory',
+      },
+      {
+        body: 'Price signals can jump from normal operation to scarcity. Without flexible assets, cost exposure becomes a system risk.',
+        kind: 'challenge',
+        metricLabel: 'Scarcity price',
+        metricUnit: '/MWh',
+        metricValue: '450',
+        number: 2,
+        title: 'Volatile market design',
+      },
+      {
+        body: 'Our systems charge when energy is abundant and discharge in scarcity windows, dampening cost spikes and operational risk.',
+        kind: 'solution',
+        metricLabel: 'Peak shift',
+        metricUnit: 'MWh',
+        metricValue: '300',
+        number: 2,
+        title: 'Grid-responsive storage',
+      },
+      {
+        body: 'Solar and wind output do not always align with demand. Without storage, clean energy is curtailed or stranded.',
+        kind: 'challenge',
+        metricLabel: 'Curtailment risk',
+        metricUnit: '%',
+        metricValue: '39',
+        number: 3,
+        title: 'Renewables without flexibility',
+      },
+      {
+        body: 'Storage shifts surplus clean energy into peak hours, turning variable generation into dependable supply.',
+        kind: 'solution',
+        metricLabel: 'Clean shift',
+        metricUnit: 'h',
+        metricValue: '4',
+        number: 3,
+        title: 'Clean flexibility',
+      },
+    ],
+  },
+  zh: {
+    cta: {
+      body: '和我们的团队讨论电网约束、储能站点、并网路径和可融资的交付模型。',
+      headline: '一起建设更有韧性的电网。',
+      href: 'mailto:hello@eastasiapower.example',
+      label: '联系东亚电力',
+    },
+    deploymentHighlights: [
+      { label: 'MWh 稳定性能力', value: '300' },
+      { label: '亚洲项目', value: '75+' },
+    ],
+    hero: {
+      headline: '为波动电网建设灵活电力系统',
+      primaryCtaLabel: '联系东亚电力',
+      secondaryCtaLabel: '阅读洞察',
+      subline: '用分布式储能和智能运营，让东亚电力系统更可靠、更可负担、更清洁。',
+    },
+    locale: 'zh',
+    proofPoints: [
+      { label: 'MWh 稳定性能力', value: '300' },
+      { label: '亚洲项目', value: '75+' },
+      { label: '市场表现', value: 'Top 5%' },
+      { label: '系统可用率', value: '99.8%' },
+    ],
+    statement: {
+      headline: '电力需求在上升。电压压力在上升。系统裕度被压缩。',
+      lead:
+        '电气化、AI 算力负荷和可再生能源增长速度快于电网与电源建设。灵活性正在成为关键基础设施。',
+    },
+    storyItems: [
+      {
+        body: '工业扩张和数据中心推高尖峰负荷，输电容量的规划、审批和建设往往跟不上需求变化。',
+        kind: 'challenge',
+        metricLabel: '电网容量',
+        metricUnit: 'GW',
+        metricValue: '82/90',
+        number: 1,
+        title: '需求增长触及容量边界',
+      },
+      {
+        body: '本地化电池储能可以缓解拥塞、稳定频率，并把容量部署在最需要的负荷中心附近。',
+        kind: 'solution',
+        metricLabel: '本地响应',
+        metricUnit: 'ms',
+        metricValue: '<1',
+        number: 1,
+        title: '用本地储能解决本地压力',
+      },
+      {
+        body: '价格信号可能从正常运行迅速跳到稀缺状态。缺少灵活资产时，成本敞口会变成系统性风险。',
+        kind: 'challenge',
+        metricLabel: '稀缺价格',
+        metricUnit: '/MWh',
+        metricValue: '450',
+        number: 2,
+        title: '波动的市场机制',
+      },
+      {
+        body: '系统在电力充裕时充电，在稀缺窗口放电，降低价格尖峰和运营风险。',
+        kind: 'solution',
+        metricLabel: '尖峰转移',
+        metricUnit: 'MWh',
+        metricValue: '300',
+        number: 2,
+        title: '响应电网的储能系统',
+      },
+      {
+        body: '风光出力并不总是匹配需求。没有储能，清洁电力可能被弃用或无法兑现价值。',
+        kind: 'challenge',
+        metricLabel: '弃电风险',
+        metricUnit: '%',
+        metricValue: '39',
+        number: 3,
+        title: '缺少灵活性的可再生能源',
+      },
+      {
+        body: '储能把富余清洁电力转移到高峰时段，让波动发电变成可依赖的供应。',
+        kind: 'solution',
+        metricLabel: '清洁转移',
+        metricUnit: 'h',
+        metricValue: '4',
+        number: 3,
+        title: '清洁灵活性',
+      },
+    ],
+  },
+}
+
+export const fallbackArticles: Record<Locale, Article[]> = {
+  de: [
+    {
+      body: 'Asiatische Strommärkte entwickeln sich gleichzeitig in drei Richtungen: höhere Last, mehr erneuerbare Einspeisung und engere Netzreserven. Speicher werden dadurch von optionalen Assets zu operativer Infrastruktur.',
+      category: 'market',
+      excerpt: 'Warum Volatilität, Flexibilität und Speicher im Jahr 2026 zusammengehören.',
+      publishedAt: '2026-05-02T00:00:00.000Z',
+      slug: 'asia-power-markets-2026',
+      title: 'Strommärkte in Asien 2026: Volatilität als neue Normalität',
+    },
+    {
+      body: 'Verteilte Speichersysteme können nahe an Lastzentren gebaut werden und damit Engpässe schneller adressieren als klassische Netzverstärkungen allein.',
+      category: 'technology',
+      excerpt: 'Wie lokale Speicher Netzresilienz schaffen.',
+      publishedAt: '2026-04-24T00:00:00.000Z',
+      slug: 'distributed-storage-resilience',
+      title: 'Wie verteilte Speicher Resilienz schaffen',
+    },
+    {
+      body: 'Ostasien Energie hat die Finanzierung für ein 150-MWh-Netzflexibilitätsportfolio abgeschlossen. Die Standorte verbinden Speicher, intelligente Steuerung und lokale Netzunterstützung.',
+      category: 'company',
+      excerpt: 'Neue Projektfinanzierung für Speicherstandorte.',
+      publishedAt: '2026-04-15T00:00:00.000Z',
+      slug: '150mwh-financing',
+      title: 'Ostasien Energie schließt 150-MWh-Finanzierung ab',
+    },
+  ],
+  en: [
+    {
+      body: 'Asian power markets are moving in three directions at once: higher load, more renewable generation, and thinner operating reserves. Storage is moving from optional asset to operational infrastructure.',
+      category: 'market',
+      excerpt: 'Why volatility, flexibility, and storage are becoming the same conversation in 2026.',
+      publishedAt: '2026-05-02T00:00:00.000Z',
+      slug: 'asia-power-markets-2026',
+      title: 'Asia power markets in 2026: volatility becomes the baseline',
+    },
+    {
+      body: 'Distributed storage systems can be developed close to load pockets, making them faster to deploy against congestion and voltage pressure than transmission reinforcement alone.',
+      category: 'technology',
+      excerpt: 'How local battery systems add resilience where grid stress actually appears.',
+      publishedAt: '2026-04-24T00:00:00.000Z',
+      slug: 'distributed-storage-resilience',
+      title: 'How distributed storage improves grid resilience',
+    },
+    {
+      body: 'East Asia Power closed financing for a 150 MWh portfolio of grid flexibility projects. The sites combine battery storage, intelligent dispatch, and local reliability services.',
+      category: 'company',
+      excerpt: 'New project financing expands flexible capacity across priority load zones.',
+      publishedAt: '2026-04-15T00:00:00.000Z',
+      slug: '150mwh-financing',
+      title: 'East Asia Power closes 150 MWh flexibility financing',
+    },
+  ],
+  zh: [
+    {
+      body: '亚洲电力市场正在同时经历三件事：负荷上升、可再生能源占比提升、运行备用变薄。储能正在从可选资产变成运营基础设施。',
+      category: 'market',
+      excerpt: '为什么波动性、灵活性和储能在 2026 年会成为同一个议题。',
+      publishedAt: '2026-05-02T00:00:00.000Z',
+      slug: 'asia-power-markets-2026',
+      title: '2026 亚洲电力市场：波动成为基准状态',
+    },
+    {
+      body: '分布式储能系统可以靠近负荷中心部署，比单纯依赖输电扩建更快响应拥塞、电压和尖峰负荷压力。',
+      category: 'technology',
+      excerpt: '本地电池系统如何在压力真正出现的位置提升韧性。',
+      publishedAt: '2026-04-24T00:00:00.000Z',
+      slug: 'distributed-storage-resilience',
+      title: '分布式储能如何提升电网韧性',
+    },
+    {
+      body: '东亚电力完成 150 MWh 电网灵活性项目组合融资。项目结合电池储能、智能调度和本地可靠性服务。',
+      category: 'company',
+      excerpt: '新项目融资扩大重点负荷区域的灵活容量。',
+      publishedAt: '2026-04-15T00:00:00.000Z',
+      slug: '150mwh-financing',
+      title: '东亚电力完成 150 MWh 灵活性项目融资',
+    },
+  ],
+}

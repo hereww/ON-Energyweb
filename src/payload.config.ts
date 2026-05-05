@@ -7,6 +7,9 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Articles } from './collections/Articles'
+import { Pages } from './collections/Pages'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -18,8 +21,27 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Pages, Articles],
   editor: lexicalEditor(),
+  globals: [SiteSettings],
+  localization: {
+    defaultLocale: 'en',
+    fallback: true,
+    locales: [
+      {
+        code: 'en',
+        label: 'English',
+      },
+      {
+        code: 'zh',
+        label: '中文',
+      },
+      {
+        code: 'de',
+        label: 'Deutsch',
+      },
+    ],
+  },
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

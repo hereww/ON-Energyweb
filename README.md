@@ -1,67 +1,70 @@
-# Payload Blank Template
+# East Asia Power Corporate Site
 
-This template comes configured with the bare minimum to get started on anything you need.
+Multilingual enterprise website and built-in Payload CMS for `东亚电力 / East Asia Power / Ostasien Energie`.
 
-## Quick start
+## Stack
 
-This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
+- Next.js App Router + TypeScript
+- Payload CMS at `/admin`
+- Postgres via `@payloadcms/db-postgres`
+- Localized routes: `/en`, `/zh`, `/de`
+- CMS collections: `Pages`, `Articles`, `Media`, `Users`
+- CMS global: `SiteSettings`
 
-## Quick Start - local setup
+## Local Development
 
-To spin up this template locally, follow these steps:
+1. Copy environment variables:
 
-### Clone
+   ```bash
+   cp .env.example .env
+   ```
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+2. Start Postgres. With Docker:
 
-### Development
+   ```bash
+   docker compose up -d postgres
+   ```
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
+3. Install and run:
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+   ```bash
+   npm install
+   npm run dev
+   ```
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+4. Seed demo CMS content and the first admin:
 
-#### Docker (Optional)
+   ```bash
+   npm run seed
+   ```
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+   Default seeded admin:
 
-To do so, follow these steps:
+   - Email: `admin@eastasiapower.example`
+   - Password: `ChangeMe123!`
 
-- Modify the `MONGODB_URL` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URL` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+5. Open:
 
-## How it works
+   - Website: `http://localhost:3000/en`
+   - Chinese: `http://localhost:3000/zh`
+   - German: `http://localhost:3000/de`
+   - CMS Admin: `http://localhost:3000/admin`
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+## Content Model
 
-### Collections
+- `Pages`: localized homepage/page content, hero copy, story cards, proof metrics, deployment highlights, CTA and SEO.
+- `Articles`: localized title, excerpt, body, SEO, shared slug, category, cover image and publish date.
+- `Media`: upload library with localized alt text.
+- `SiteSettings`: localized company name, navigation, footer, contact details and default SEO.
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+## Useful Commands
 
-- #### Users (Authentication)
+```bash
+npm run dev
+npm run seed
+npm run generate:types
+npm run lint
+npm run build
+```
 
-  Users are auth-enabled collections that have access to the admin panel.
-
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/3.x/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
-- #### Media
-
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
-
-### Docker
-
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
-
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
-
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+Generated visual assets live in `public/assets`. The approved concept reference is stored at `public/concepts/east-asia-power-homepage-concept.png`.
