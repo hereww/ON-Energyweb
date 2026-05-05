@@ -28,6 +28,7 @@ const eslintConfig = [
       '.next/',
       'grid_volatility_assets/',
       'playwright-report/',
+      'sucai001/',
       'test-results/',
       'src/payload-types.ts',
       'src/payload-generated-schema.ts',
