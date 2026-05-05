@@ -11,19 +11,19 @@ export const dynamic = 'force-dynamic'
 
 const newsLabels: Record<Locale, { intro: string; readMore: string; title: string }> = {
   de: {
-    intro: 'Marktupdates, technische Perspektiven und Unternehmensnachrichten.',
+    intro: 'Unternehmensinformationen, öffentliche Projektbelege, Qualifikationen und technische Hinweise.',
     readMore: 'Mehr lesen',
-    title: 'Einblicke',
+    title: 'Informationen',
   },
   en: {
-    intro: 'Market updates, technical perspectives, and company news.',
+    intro: 'Company information, public project records, qualifications, and technical notes.',
     readMore: 'Read more',
-    title: 'Insights',
+    title: 'Information',
   },
   zh: {
-    intro: '市场更新、技术视角和公司新闻。',
+    intro: '公司信息、公开项目记录、资质与技术资料整理。',
     readMore: '阅读全文',
-    title: '洞察',
+    title: '资料',
   },
 }
 
@@ -42,7 +42,7 @@ export async function generateMetadata({
 
   return {
     description: labels.intro,
-    title: `${labels.title} | East Asia Power`,
+    title: `${labels.title} | East Asia Power Construction Co., Ltd.`,
   }
 }
 

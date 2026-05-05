@@ -48,3 +48,10 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# local generated/reference files
+/.playwright-mcp/
+/grid_volatility_assets/
+/release/
+/sucai001/
+/tests/

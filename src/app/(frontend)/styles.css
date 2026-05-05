@@ -53,7 +53,7 @@ svg {
 #contact,
 #projects,
 #solutions {
-  scroll-margin-top: 120px;
+  scroll-margin-top: 0;
 }
 
 .site-header {
@@ -1109,6 +1109,729 @@ svg {
   background: var(--accent);
 }
 
+.webgl-experience {
+  background: #050505;
+  color: var(--text);
+  min-height: 100svh;
+  overflow: hidden;
+  position: relative;
+}
+
+.webgl-stage {
+  cursor: grab;
+  inset: 0;
+  position: absolute;
+  touch-action: none;
+}
+
+.webgl-stage[data-dragging="true"] {
+  cursor: grabbing;
+}
+
+.webgl-stage canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.webgl-experience::before,
+.webgl-experience::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.webgl-experience::before {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.28) 45%, rgba(0, 0, 0, 0.74) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2), #050505 100%);
+  inset: 0;
+}
+
+.webgl-experience::after {
+  background:
+    linear-gradient(rgba(255, 242, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 242, 0, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  inset: 0;
+  mask-image: radial-gradient(circle at 55% 45%, #000 0, transparent 58%);
+  opacity: 0.52;
+}
+
+.webgl-copy {
+  left: clamp(24px, 5vw, 72px);
+  max-width: 520px;
+  position: absolute;
+  top: clamp(110px, 18vh, 180px);
+  z-index: 2;
+}
+
+.webgl-copy span,
+.webgl-panel small {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.68);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 820;
+  gap: 8px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.webgl-copy span::before,
+.webgl-panel small::before {
+  background: var(--accent);
+  border-radius: 999px;
+  content: "";
+  height: 8px;
+  width: 8px;
+}
+
+.webgl-copy h2 {
+  font-size: clamp(44px, 6.4vw, 96px);
+  font-weight: 320;
+  letter-spacing: 0;
+  line-height: 0.92;
+  margin: 28px 0 0;
+}
+
+.webgl-copy p {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.5;
+  margin: 28px 0 0;
+  max-width: 450px;
+}
+
+.webgl-panel {
+  background: rgba(5, 5, 5, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  bottom: clamp(24px, 6vh, 72px);
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  transform: translateY(14px);
+  transition:
+    opacity 360ms ease,
+    transform 360ms ease;
+  width: min(390px, calc(100vw - 48px));
+  z-index: 2;
+}
+
+.webgl-panel[data-ready="false"] {
+  opacity: 0.45;
+}
+
+.webgl-panel[data-ready="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.webgl-panel strong {
+  color: var(--accent);
+  display: block;
+  font-size: clamp(46px, 4.8vw, 74px);
+  font-weight: 320;
+  line-height: 0.88;
+}
+
+.webgl-panel p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.48;
+  margin: 0;
+}
+
+.webgl-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.webgl-actions button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 0;
+  border-radius: 6px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 820;
+  height: 40px;
+  width: 48px;
+}
+
+.webgl-actions button[aria-selected="true"],
+.webgl-actions button:hover,
+.webgl-actions button:focus-visible {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.grid-volatility-scene {
+  background: #050505;
+  color: #fff;
+  min-height: 620svh;
+  overflow: clip;
+  padding: 0;
+}
+
+.grid-volatility-scene::before,
+.grid-volatility-scene::after {
+  content: none;
+}
+
+.webgl-sticky {
+  background:
+    radial-gradient(circle at var(--pin-x, 58%) var(--pin-y, 45%), rgba(255, 242, 0, 0.18), transparent 18vw),
+    radial-gradient(circle at 80% 28%, rgba(255, 255, 255, 0.13), transparent 24vw),
+    linear-gradient(90deg, #050505 0%, #050505 30%, rgba(5, 5, 5, 0.9) 48%, #050505 100%);
+  height: 100svh;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+}
+
+.grid-volatility-scene .webgl-stage {
+  background: #050505;
+  filter: contrast(1.18) saturate(0.82) brightness(0.9);
+  inset: 0;
+  opacity: 0;
+  transition: opacity 520ms ease;
+  z-index: 0;
+}
+
+.grid-volatility-scene .webgl-stage[data-ready="true"] {
+  opacity: 1;
+}
+
+.grid-scene-wash {
+  background:
+    radial-gradient(circle at var(--pin-x, 58%) var(--pin-y, 45%), rgba(255, 242, 0, 0.26), transparent 18vw),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.88) 0%, rgba(5, 5, 5, 0.18) 42%, rgba(5, 5, 5, 0.46) 100%),
+    linear-gradient(180deg, rgba(5, 5, 5, 0.68) 0%, rgba(5, 5, 5, 0) 44%, #050505 100%);
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.grid-info-card {
+  background: rgba(5, 5, 5, 0.93);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  color: #fff;
+  display: grid;
+  gap: clamp(20px, 3.2vh, 38px);
+  left: clamp(36px, 4vw, 60px);
+  max-width: min(430px, calc(100vw - 72px));
+  min-height: clamp(280px, 34vh, 360px);
+  padding: clamp(28px, 3vw, 46px);
+  position: absolute;
+  top: clamp(108px, 12vh, 148px);
+  transform: translate3d(0, 0, 0);
+  transition:
+    background 280ms ease,
+    color 280ms ease;
+  width: 30vw;
+  z-index: 4;
+}
+
+.grid-info-card.solution {
+  background: var(--accent);
+  color: #050505;
+}
+
+.grid-info-kicker {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.6);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 620;
+  gap: 8px;
+  line-height: 1;
+}
+
+.grid-info-card.solution .grid-info-kicker {
+  color: rgba(5, 5, 5, 0.68);
+}
+
+.grid-info-kicker span {
+  background: var(--danger);
+  border-radius: 50%;
+  display: inline-block;
+  height: 9px;
+  position: relative;
+  width: 9px;
+}
+
+.grid-info-card.solution .grid-info-kicker span {
+  background: #050505;
+}
+
+.grid-info-card h2 {
+  font-size: clamp(34px, 3vw, 56px);
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1;
+  margin: 0;
+}
+
+.grid-info-card p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(15px, 1.1vw, 18px);
+  font-weight: 360;
+  line-height: 1.48;
+  margin: 0;
+}
+
+.grid-info-card.solution p {
+  color: rgba(5, 5, 5, 0.76);
+}
+
+.grid-info-card small {
+  color: currentColor;
+  font-size: 12px;
+  opacity: 0.62;
+}
+
+.grid-capacity-card {
+  background: transparent;
+  border-radius: 0;
+  display: grid;
+  gap: 18px;
+  left: clamp(60px, 16vw, 300px);
+  max-width: min(360px, calc(100vw - 56px));
+  padding: 0;
+  position: absolute;
+  top: clamp(625px, 70vh, 720px);
+  width: 28vw;
+  z-index: 4;
+}
+
+.capacity-head {
+  align-items: end;
+  display: flex;
+  justify-content: space-between;
+}
+
+.capacity-head small {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+  font-weight: 420;
+}
+
+.capacity-head strong {
+  align-items: baseline;
+  color: #fff;
+  display: flex;
+  font-size: clamp(56px, 5.2vw, 86px);
+  font-weight: 300;
+  gap: 5px;
+  line-height: 0.9;
+}
+
+.capacity-head strong span {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 17px;
+  font-weight: 360;
+}
+
+.capacity-track {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2) 0 2px,
+      rgba(255, 255, 255, 0) 2px 6px
+    ),
+    #3c3c3c;
+  border-radius: 999px;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.capacity-track::before {
+  animation: grid-capacity-charge 1.2s linear infinite;
+  background: linear-gradient(90deg, #ff3b1f 0%, #ff3b1f 28%, #e31f13 52%, #ff3b1f 78%, #ff3b1f 100%);
+  background-size: 360% 100%;
+  border-right: 1px solid #050505;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: var(--capacity-progress);
+}
+
+.grid-capacity-card.solution .capacity-track::before {
+  animation-duration: 1.8s;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, #fff87d 52%, var(--accent) 78%, var(--accent) 100%);
+  background-size: 360% 100%;
+}
+
+.capacity-track span {
+  align-items: center;
+  color: #050505;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 430;
+  gap: 7px;
+  left: 13px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.capacity-track i {
+  background: #050505;
+  clip-path: polygon(45% 0, 100% 0, 60% 42%, 100% 42%, 33% 100%, 45% 54%, 0 54%);
+  display: inline-block;
+  height: 13px;
+  opacity: 0.72;
+  width: 9px;
+}
+
+.webgl-map-pin {
+  align-items: center;
+  background: #050505;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 0 34px rgba(255, 242, 0, 0.16);
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+  font-weight: 820;
+  height: 42px;
+  justify-content: center;
+  left: var(--pin-x);
+  position: absolute;
+  top: var(--pin-y);
+  transform: translate(-50%, -50%);
+  transition:
+    left 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    top 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 240ms ease;
+  width: 72px;
+  z-index: 3;
+}
+
+.webgl-map-pin::before {
+  background: var(--danger);
+  content: "";
+  height: 10px;
+  margin-right: 8px;
+  width: 10px;
+}
+
+.webgl-map-pin.solution {
+  background: var(--accent);
+  color: #050505;
+}
+
+.webgl-map-pin.solution::before {
+  background: #050505;
+}
+
+.grid-scene-copy {
+  bottom: clamp(86px, 9vh, 118px);
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 330px;
+  opacity: 0.7;
+  position: absolute;
+  right: clamp(24px, 3.4vw, 54px);
+  z-index: 3;
+}
+
+.grid-scene-copy span {
+  align-items: center;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 820;
+  gap: 8px;
+  text-transform: uppercase;
+}
+
+.grid-scene-copy span::before {
+  background: var(--accent);
+  border-radius: 50%;
+  content: "";
+  height: 8px;
+  width: 8px;
+}
+
+.grid-scene-copy h3 {
+  font-size: 28px;
+  font-weight: 430;
+  line-height: 1.04;
+  margin: 16px 0 0;
+}
+
+.grid-scene-copy p {
+  font-size: 14px;
+  line-height: 1.42;
+  margin: 14px 0 0;
+}
+
+.grid-volatility-scene .webgl-actions {
+  bottom: clamp(28px, 4vh, 48px);
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  position: absolute;
+  right: clamp(24px, 3vw, 42px);
+  z-index: 5;
+}
+
+.grid-volatility-scene .webgl-actions button {
+  background: rgba(5, 5, 5, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  color: #fff;
+  height: 40px;
+  width: 50px;
+}
+
+.grid-volatility-scene .webgl-actions button[aria-selected="true"],
+.grid-volatility-scene .webgl-actions button:hover,
+.grid-volatility-scene .webgl-actions button:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #050505;
+}
+
+.grid-interaction-hint {
+  align-items: center;
+  background: rgba(5, 5, 5, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  bottom: clamp(28px, 4vh, 48px);
+  color: rgba(255, 255, 255, 0.72);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 720;
+  gap: 8px;
+  left: clamp(36px, 4vw, 60px);
+  padding: 10px 14px;
+  position: absolute;
+  text-transform: uppercase;
+  z-index: 4;
+}
+
+.grid-interaction-hint span {
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  display: inline-block;
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.grid-interaction-hint span::before {
+  background: currentColor;
+  border-radius: 50%;
+  content: "";
+  height: 3px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 3px;
+}
+
+@keyframes grid-capacity-charge {
+  from {
+    background-position: 0 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+.wind-experience {
+  background: #030303;
+  color: var(--text);
+  min-height: 100svh;
+  overflow: hidden;
+  position: relative;
+}
+
+.wind-stage {
+  cursor: grab;
+  inset: 0;
+  position: absolute;
+  touch-action: none;
+}
+
+.wind-stage[data-dragging="true"] {
+  cursor: grabbing;
+}
+
+.wind-stage canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.wind-experience::before,
+.wind-experience::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.wind-experience::before {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.28) 44%, rgba(0, 0, 0, 0.7) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12), #030303 100%);
+  inset: 0;
+}
+
+.wind-experience::after {
+  background:
+    linear-gradient(rgba(255, 242, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 242, 0, 0.07) 1px, transparent 1px);
+  background-size: 68px 68px;
+  inset: 0;
+  mask-image: radial-gradient(circle at 57% 44%, #000 0, transparent 62%);
+  opacity: 0.56;
+}
+
+.wind-reference-image {
+  background-image: url("/assets/windmill.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  bottom: clamp(150px, 18vh, 220px);
+  filter: grayscale(1) contrast(1.08) brightness(0.78);
+  height: min(42vh, 420px);
+  opacity: 0.22;
+  pointer-events: none;
+  position: absolute;
+  right: clamp(24px, 7vw, 110px);
+  width: min(28vw, 260px);
+  z-index: 1;
+}
+
+.wind-copy {
+  left: clamp(24px, 5vw, 72px);
+  max-width: 650px;
+  position: absolute;
+  top: clamp(112px, 18vh, 178px);
+  z-index: 2;
+}
+
+.wind-copy span,
+.wind-panel small {
+  align-items: center;
+  color: rgba(255, 255, 255, 0.68);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 820;
+  gap: 8px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.wind-copy span::before,
+.wind-panel small::before {
+  background: var(--accent);
+  border-radius: 999px;
+  content: "";
+  height: 8px;
+  width: 8px;
+}
+
+.wind-copy h1 {
+  font-size: clamp(52px, 7.2vw, 108px);
+  font-weight: 320;
+  letter-spacing: 0;
+  line-height: 0.9;
+  margin: 28px 0 0;
+}
+
+.wind-copy p {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.52;
+  margin: 28px 0 0;
+  max-width: 500px;
+}
+
+.wind-panel {
+  background: rgba(5, 5, 5, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  bottom: clamp(24px, 6vh, 72px);
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  transform: translateY(14px);
+  transition:
+    opacity 360ms ease,
+    transform 360ms ease;
+  width: min(400px, calc(100vw - 48px));
+  z-index: 2;
+}
+
+.wind-panel[data-ready="false"] {
+  opacity: 0.45;
+}
+
+.wind-panel[data-ready="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wind-panel strong {
+  color: var(--accent);
+  font-size: 54px;
+  font-weight: 320;
+  letter-spacing: 0;
+  line-height: 0.92;
+}
+
+.wind-panel p {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.wind-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.wind-actions button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 840;
+  height: 34px;
+  width: 50px;
+}
+
+.wind-actions button[aria-selected="true"],
+.wind-actions button:hover,
+.wind-actions button:focus-visible {
+  background: var(--accent);
+  color: var(--ink);
+  outline: none;
+}
+
 .metric-line.challenge.is-active span {
   background: var(--danger);
 }
@@ -1726,6 +2449,41 @@ svg {
     width: min(340px, calc(100vw - 56px));
   }
 
+  .webgl-copy {
+    max-width: 460px;
+    top: 110px;
+  }
+
+  .webgl-panel {
+    left: 28px;
+    right: auto;
+  }
+
+  .grid-info-card,
+  .grid-capacity-card {
+    left: 28px;
+    width: min(360px, calc(100vw - 56px));
+  }
+
+  .grid-capacity-card {
+    top: auto;
+    bottom: 116px;
+  }
+
+  .grid-scene-copy {
+    display: none;
+  }
+
+  .wind-copy {
+    max-width: 500px;
+    top: 110px;
+  }
+
+  .wind-panel {
+    left: 28px;
+    right: auto;
+  }
+
   .story-meter.solution {
     background: rgba(255, 242, 0, 0.92);
     color: var(--ink);
@@ -1802,6 +2560,121 @@ svg {
   .story-shell {
     min-height: calc(var(--story-steps) * 106vh);
     padding: 0;
+  }
+
+  .webgl-experience {
+    min-height: 112svh;
+  }
+
+  .grid-volatility-scene {
+    min-height: 600svh;
+  }
+
+  .grid-info-card {
+    gap: 20px;
+    left: 18px;
+    min-height: 230px;
+    padding: 22px;
+    top: 92px;
+    width: calc(100vw - 36px);
+  }
+
+  .grid-info-card h2 {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+
+  .grid-info-card p {
+    font-size: 15px;
+  }
+
+  .grid-capacity-card {
+    left: 18px;
+    padding: 18px;
+    top: auto;
+    bottom: 88px;
+    width: calc(100vw - 36px);
+  }
+
+  .capacity-head strong {
+    font-size: 42px;
+  }
+
+  .webgl-map-pin {
+    height: 42px;
+    width: 42px;
+  }
+
+  .grid-volatility-scene .webgl-actions {
+    bottom: 24px;
+    left: 88px;
+    overflow-x: auto;
+    right: 18px;
+  }
+
+  .grid-interaction-hint {
+    display: none;
+  }
+
+  .webgl-copy {
+    left: 18px;
+    max-width: calc(100vw - 36px);
+    top: 98px;
+  }
+
+  .webgl-copy h2 {
+    font-size: clamp(42px, 12vw, 62px);
+  }
+
+  .webgl-copy p {
+    max-width: 340px;
+  }
+
+  .webgl-panel {
+    bottom: 22px;
+    left: 18px;
+    padding: 20px;
+    width: calc(100vw - 36px);
+  }
+
+  .webgl-panel strong {
+    font-size: 44px;
+  }
+
+  .wind-experience {
+    min-height: 112svh;
+  }
+
+  .wind-copy {
+    left: 18px;
+    max-width: calc(100vw - 36px);
+    top: 98px;
+  }
+
+  .wind-copy h1 {
+    font-size: clamp(42px, 12vw, 62px);
+  }
+
+  .wind-copy p {
+    max-width: 340px;
+  }
+
+  .wind-panel {
+    bottom: 22px;
+    left: 18px;
+    padding: 20px;
+    width: calc(100vw - 36px);
+  }
+
+  .wind-panel strong {
+    font-size: 44px;
+  }
+
+  .wind-reference-image {
+    bottom: 260px;
+    height: 220px;
+    opacity: 0.16;
+    right: 18px;
+    width: 120px;
   }
 
   .map-image-wrap {

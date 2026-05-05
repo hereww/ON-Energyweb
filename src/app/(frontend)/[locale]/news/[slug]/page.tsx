@@ -11,24 +11,24 @@ export const dynamic = 'force-dynamic'
 
 const labels: Record<Locale, { back: string; titleSuffix: string }> = {
   de: {
-    back: 'Zurück zu Einblicke',
-    titleSuffix: 'Ostasien Energie',
+    back: 'Zurück zu Informationen',
+    titleSuffix: 'East Asia Power Construction Co., Ltd.',
   },
   en: {
-    back: 'Back to insights',
-    titleSuffix: 'East Asia Power',
+    back: 'Back to information',
+    titleSuffix: 'East Asia Power Construction Co., Ltd.',
   },
   zh: {
-    back: '返回洞察',
-    titleSuffix: '东亚电力',
+    back: '返回资料',
+    titleSuffix: '东亚电力建设有限公司',
   },
 }
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => [
-    { locale, slug: 'asia-power-markets-2026' },
-    { locale, slug: 'distributed-storage-resilience' },
-    { locale, slug: '150mwh-financing' },
+    { locale, slug: 'company-registration-profile' },
+    { locale, slug: 'public-project-records' },
+    { locale, slug: 'qualification-and-renewable-technology' },
   ])
 }
 

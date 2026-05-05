@@ -37,6 +37,14 @@ function withFallback(value: unknown, fallback: string): string {
   return isFilled(value) ? value : fallback
 }
 
+function cleanPhone(value: unknown, fallback: string | undefined): string | undefined {
+  if (!isFilled(value)) {
+    return fallback
+  }
+
+  return value.includes('1234 5678') ? fallback : value
+}
+
 function mergeProofPoints(
   fallbackItems: HomeContent['proofPoints'],
   cmsItems: HomeContent['proofPoints'] | undefined,
@@ -86,6 +94,33 @@ function mergeStoryItems(
   return merged.length > 0 ? merged : fallbackItems
 }
 
+function mergeGridSceneSteps(
+  fallbackItems: HomeContent['gridSceneSteps'],
+  cmsItems: HomeContent['gridSceneSteps'] | undefined,
+): HomeContent['gridSceneSteps'] {
+  if (!cmsItems || cmsItems.length === 0) {
+    return fallbackItems
+  }
+
+  const merged = cmsItems
+    .map((item, index) => {
+      const fallback = fallbackItems[index]
+
+      return {
+        body: withFallback(item.body, fallback?.body ?? ''),
+        capacity: withFallback(item.capacity, fallback?.capacity ?? ''),
+        kind: item.kind ?? fallback?.kind ?? 'challenge',
+        label: withFallback(item.label, fallback?.label ?? ''),
+        number: item.number ?? fallback?.number ?? index + 1,
+        progress: item.progress ?? fallback?.progress ?? 0,
+        title: withFallback(item.title, fallback?.title ?? ''),
+      }
+    })
+    .filter((item) => isFilled(item.title) && isFilled(item.body) && isFilled(item.label))
+
+  return merged.length > 0 ? merged : fallbackItems
+}
+
 function mergeLinks(
   fallbackItems: SiteSettings['navigation'],
   cmsItems: SiteSettings['navigation'] | undefined,
@@ -97,7 +132,8 @@ function mergeLinks(
   const merged = cmsItems
     .map((item, index) => {
       const fallback =
-        fallbackItems.find((fallbackItem) => fallbackItem.href === item.href) ?? fallbackItems[index]
+        fallbackItems.find((fallbackItem) => fallbackItem.href === item.href) ??
+        fallbackItems[index]
 
       return {
         href: withFallback(item.href, fallback?.href ?? '#'),
@@ -106,7 +142,17 @@ function mergeLinks(
     })
     .filter((item) => isFilled(item.href) && isFilled(item.label))
 
-  return merged.length > 0 ? merged : fallbackItems
+  if (merged.length === 0) {
+    return fallbackItems
+  }
+
+  fallbackItems.forEach((fallbackItem) => {
+    if (!merged.some((item) => item.href === fallbackItem.href)) {
+      merged.push(fallbackItem)
+    }
+  })
+
+  return merged
 }
 
 function mergeHomeContent(fallback: HomeContent, page: CMSHomePage | undefined): HomeContent {
@@ -121,11 +167,18 @@ function mergeHomeContent(fallback: HomeContent, page: CMSHomePage | undefined):
       href: withFallback(page.cta?.href, fallback.cta.href),
       label: withFallback(page.cta?.label, fallback.cta.label),
     },
-    deploymentHighlights: mergeProofPoints(fallback.deploymentHighlights, page.deploymentHighlights),
+    deploymentHighlights: mergeProofPoints(
+      fallback.deploymentHighlights,
+      page.deploymentHighlights,
+    ),
+    gridSceneSteps: mergeGridSceneSteps(fallback.gridSceneSteps, page.gridSceneSteps),
     hero: {
       headline: withFallback(page.hero?.headline, fallback.hero.headline),
       primaryCtaLabel: withFallback(page.hero?.primaryCtaLabel, fallback.hero.primaryCtaLabel),
-      secondaryCtaLabel: withFallback(page.hero?.secondaryCtaLabel, fallback.hero.secondaryCtaLabel ?? ''),
+      secondaryCtaLabel: withFallback(
+        page.hero?.secondaryCtaLabel,
+        fallback.hero.secondaryCtaLabel ?? '',
+      ),
       subline: withFallback(page.hero?.subline, fallback.hero.subline),
     },
     locale: fallback.locale,
@@ -139,7 +192,13 @@ function mergeHomeContent(fallback: HomeContent, page: CMSHomePage | undefined):
 }
 
 function normalizeArticle(article: CMSArticle): Article | undefined {
-  if (!article.slug || !article.title || !article.excerpt || !article.body || !article.publishedAt) {
+  if (
+    !article.slug ||
+    !article.title ||
+    !article.excerpt ||
+    !article.body ||
+    !article.publishedAt
+  ) {
     return undefined
   }
 
@@ -197,7 +256,7 @@ export async function getSiteSettings(locale: Locale): Promise<SiteSettings> {
       contact: {
         address: withFallback(settings.contact?.address, fallback.contact.address ?? ''),
         email: withFallback(settings.contact?.email, fallback.contact.email),
-        phone: withFallback(settings.contact?.phone, fallback.contact.phone ?? ''),
+        phone: cleanPhone(settings.contact?.phone, fallback.contact.phone),
       },
       footerLinks: mergeLinks(fallback.footerLinks, settings.footerLinks),
       navigation: mergeLinks(fallback.navigation, settings.navigation),

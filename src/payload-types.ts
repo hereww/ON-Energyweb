@@ -213,6 +213,18 @@ export interface Page {
         id?: string | null;
       }[]
     | null;
+  gridSceneSteps?:
+    | {
+        kind: 'challenge' | 'solution';
+        number: number;
+        title: string;
+        body: string;
+        label: string;
+        capacity: string;
+        progress: number;
+        id?: string | null;
+      }[]
+    | null;
   cta: {
     headline: string;
     body: string;
@@ -415,6 +427,18 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         value?: T;
         label?: T;
+        id?: T;
+      };
+  gridSceneSteps?:
+    | T
+    | {
+        kind?: T;
+        number?: T;
+        title?: T;
+        body?: T;
+        label?: T;
+        capacity?: T;
+        progress?: T;
         id?: T;
       };
   cta?:

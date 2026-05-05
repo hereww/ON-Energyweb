@@ -18,6 +18,7 @@ function pageData(locale: Locale): PageSeedData {
   return {
     cta: content.cta,
     deploymentHighlights: content.deploymentHighlights,
+    gridSceneSteps: content.gridSceneSteps,
     hero: content.hero,
     proofPoints: content.proofPoints,
     slug: 'home',

@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 import { ScrollStory } from '@/components/ScrollStory'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
+import { WebGLGridExperience } from '@/components/WebGLGridExperience'
 import { getArticles, getHomeContent, getSiteSettings } from '@/lib/content'
 import { isLocale, locales, type Locale } from '@/i18n/config'
 
@@ -22,37 +23,71 @@ const pageLabels: Record<
     statementAlt: string
     storyTitle: string
     viewAll: string
+    webglBody: string
+    webglCapacity: string
+    webglDrag: string
+    webglEyebrow: string
+    webglFallback: string
+    webglLoading: string
+    webglSteps: string
+    webglTitle: string
   }
 > = {
   de: {
-    deploymentTitle: 'Deployment',
+    deploymentTitle: 'Projektbelege',
     expertiseLabel: 'Unsere Expertise',
-    impactTitle: 'Bewährte Leistung. Für Zuverlässigkeit gebaut.',
-    insightsTitle: 'Einblicke',
+    impactTitle: 'Öffentliche Fakten, klar für Projektgespräche aufbereitet.',
+    insightsTitle: 'Informationen',
     readMore: 'Mehr lesen',
     statementAlt: 'Speicheranlage im Netz',
-    storyTitle: 'Netzvolatilität in Asien',
-    viewAll: 'Alle Einblicke',
+    storyTitle: 'Strombau in Liaoning',
+    viewAll: 'Alle Informationen',
+    webglBody:
+      'Ziehen Sie die Szene, drehen Sie das Netz und wechseln Sie die Hotspots, um Stromanlagen, Baustellenknoten und Energieflüsse im Zusammenspiel zu sehen.',
+    webglCapacity: 'Netzkapazität',
+    webglDrag: 'Szene ziehen',
+    webglEyebrow: 'WebGL Netzmodell',
+    webglFallback: 'Stadtmodell-Fallback aktiv',
+    webglLoading: 'Stadtmodell wird geladen...',
+    webglSteps: 'Szenenschritte des Netzmodells',
+    webglTitle: 'Interaktive Strominfrastruktur-Simulation',
   },
   en: {
-    deploymentTitle: 'Deployment',
+    deploymentTitle: 'Project records',
     expertiseLabel: 'Our Expertise',
-    impactTitle: 'Proven impact. Built for performance.',
-    insightsTitle: 'Insights',
+    impactTitle: 'Public facts organized for serious project conversations.',
+    insightsTitle: 'Information',
     readMore: 'Read more',
     statementAlt: 'Grid storage site',
-    storyTitle: 'Grid volatility across Asia',
-    viewAll: 'View all insights',
+    storyTitle: 'Power engineering in Liaoning',
+    viewAll: 'View all information',
+    webglBody:
+      'Drag the scene, rotate the grid, and switch hotspots to see how power assets, construction nodes, and energy routes work together.',
+    webglCapacity: 'Grid Capacity',
+    webglDrag: 'Drag scene',
+    webglEyebrow: 'WebGL grid model',
+    webglFallback: 'City model fallback active',
+    webglLoading: 'Loading city model...',
+    webglSteps: 'Grid volatility scene steps',
+    webglTitle: 'Interactive power infrastructure simulation',
   },
   zh: {
-    deploymentTitle: '项目部署',
+    deploymentTitle: '项目记录',
     expertiseLabel: '核心能力',
-    impactTitle: '经过验证的影响力，为可靠运行而建。',
-    insightsTitle: '洞察',
+    impactTitle: '把公开事实整理成可用于项目沟通的官网内容。',
+    insightsTitle: '资料',
     readMore: '阅读全文',
     statementAlt: '电网储能站',
-    storyTitle: '亚洲电网波动场景',
-    viewAll: '查看全部洞察',
+    storyTitle: '辽宁电力工程场景',
+    viewAll: '查看全部资料',
+    webglBody: '拖动场景旋转电网，点击热点查看电力设施、施工节点和能量线路如何协同运行。',
+    webglCapacity: '电网容量',
+    webglDrag: '拖动场景',
+    webglEyebrow: 'WebGL 电网模型',
+    webglFallback: '城市模型备用状态已启用',
+    webglLoading: '正在加载城市模型...',
+    webglSteps: '电网波动场景步骤',
+    webglTitle: '电力基础设施互动仿真',
   },
 }
 
@@ -151,6 +186,20 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
             </ul>
           </div>
         </section>
+
+        <WebGLGridExperience
+          body={labels.webglBody}
+          eyebrow={labels.webglEyebrow}
+          labels={{
+            capacity: labels.webglCapacity,
+            drag: labels.webglDrag,
+            fallback: labels.webglFallback,
+            loading: labels.webglLoading,
+            steps: labels.webglSteps,
+          }}
+          steps={home.gridSceneSteps}
+          title={labels.webglTitle}
+        />
 
         <ScrollStory items={home.storyItems} />
 

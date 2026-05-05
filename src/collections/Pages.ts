@@ -161,6 +161,61 @@ export const Pages: CollectionConfig = {
       ],
     },
     {
+      name: 'gridSceneSteps',
+      type: 'array',
+      fields: [
+        {
+          name: 'kind',
+          type: 'select',
+          defaultValue: 'challenge',
+          options: [
+            {
+              label: 'Challenge',
+              value: 'challenge',
+            },
+            {
+              label: 'Solution',
+              value: 'solution',
+            },
+          ],
+          required: true,
+        },
+        {
+          name: 'number',
+          type: 'number',
+          required: true,
+        },
+        {
+          name: 'title',
+          type: 'text',
+          localized: true,
+          required: true,
+        },
+        {
+          name: 'body',
+          type: 'textarea',
+          localized: true,
+          required: true,
+        },
+        {
+          name: 'label',
+          type: 'text',
+          localized: true,
+          required: true,
+        },
+        {
+          name: 'capacity',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'progress',
+          type: 'number',
+          required: true,
+        },
+      ],
+    },
+    {
       name: 'cta',
       type: 'group',
       fields: [

@@ -12,6 +12,16 @@ export type StoryItem = {
   title: string
 }
 
+export type GridSceneStep = {
+  body: string
+  capacity: string
+  kind: StoryKind
+  label: string
+  number: number
+  progress: number
+  title: string
+}
+
 export type ProofPoint = {
   label: string
   value: string
@@ -25,6 +35,7 @@ export type HomeContent = {
     label: string
   }
   deploymentHighlights: ProofPoint[]
+  gridSceneSteps: GridSceneStep[]
   hero: {
     primaryCtaLabel: string
     secondaryCtaLabel?: string

@@ -384,7 +384,7 @@ export function ScrollStory({ items }: ScrollStoryProps) {
   }
 
   return (
-    <section className="story-shell" id="solutions" ref={sectionRef} style={storyStyle}>
+    <section className="story-shell" id="story-frames" ref={sectionRef} style={storyStyle}>
       <div className="story-sticky">
         <div className="map-canvas" aria-hidden="true">
           <canvas
