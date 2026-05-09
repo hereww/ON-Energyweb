@@ -1,0 +1,129 @@
+{
+  "sectionMetrics": {
+    "start": 2297.4921875,
+    "distance": 21000,
+    "height": 22000,
+    "viewport": 1000
+  },
+  "frames": [
+    {
+      "n": 1,
+      "p": 0.052,
+      "label": "Step 1 start / city wide"
+    },
+    {
+      "n": 2,
+      "p": 0.09,
+      "label": "Step 1 camera hold"
+    },
+    {
+      "n": 3,
+      "p": 0.128,
+      "label": "Step 1 exit"
+    },
+    {
+      "n": 4,
+      "p": 0.137,
+      "label": "Step 2 enter"
+    },
+    {
+      "n": 5,
+      "p": 0.19,
+      "label": "Step 2 zoom in"
+    },
+    {
+      "n": 6,
+      "p": 0.236,
+      "label": "Step 2 storage close-up"
+    },
+    {
+      "n": 7,
+      "p": 0.266,
+      "label": "Step 2 exit close-up"
+    },
+    {
+      "n": 8,
+      "p": 0.286,
+      "label": "Step 3 enter"
+    },
+    {
+      "n": 9,
+      "p": 0.36,
+      "label": "Step 3 mid"
+    },
+    {
+      "n": 10,
+      "p": 0.435,
+      "label": "Step 3 exit"
+    },
+    {
+      "n": 11,
+      "p": 0.449,
+      "label": "Step 4 enter"
+    },
+    {
+      "n": 12,
+      "p": 0.56,
+      "label": "Step 4 mid"
+    },
+    {
+      "n": 13,
+      "p": 0.675,
+      "label": "Step 4 exit"
+    },
+    {
+      "n": 14,
+      "p": 0.76,
+      "label": "Step 5 enter"
+    },
+    {
+      "n": 15,
+      "p": 0.87,
+      "label": "Step 5 pullback"
+    },
+    {
+      "n": 16,
+      "p": 0.902,
+      "label": "Step 6 enter"
+    },
+    {
+      "n": 17,
+      "p": 0.95,
+      "label": "Step 6 final path"
+    },
+    {
+      "n": 18,
+      "p": 0.999,
+      "label": "Step 6 end"
+    }
+  ],
+  "files": [
+    "frame-01-p052.png",
+    "frame-02-p090.png",
+    "frame-03-p128.png",
+    "frame-04-p137.png",
+    "frame-05-p190.png",
+    "frame-06-p236.png",
+    "frame-07-p266.png",
+    "frame-08-p286.png",
+    "frame-09-p360.png",
+    "frame-10-p435.png",
+    "frame-11-p449.png",
+    "frame-12-p560.png",
+    "frame-13-p675.png",
+    "frame-14-p760.png",
+    "frame-15-p870.png",
+    "frame-16-p902.png",
+    "frame-17-p950.png",
+    "frame-18-p999.png"
+  ],
+  "contactSheet": "solutions-camera-contact-sheet.png",
+  "logs": [
+    "[console:info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+    "[console:log] [HMR] connected",
+    "[console:log] [Fast Refresh] rebuilding",
+    "[console:log] [Fast Refresh] done in 106ms",
+    "[console:log] [Fast Refresh] rebuilding",
+    "[console:log] [Fast Refresh] done in 93ms"
+  ]
+}

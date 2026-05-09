@@ -24,13 +24,48 @@ html {
 }
 
 body {
+  --font-body: var(
+    --font-body-loaded,
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    ui-sans-serif,
+    system-ui,
+    sans-serif
+  );
+  --font-display: var(
+    --font-display-loaded,
+    "Arial Narrow",
+    "DIN Condensed",
+    "Roboto Condensed",
+    Impact,
+    sans-serif
+  );
+  --font-number: var(
+    --font-display-loaded,
+    "Arial Narrow",
+    "DIN Condensed",
+    ui-sans-serif,
+    system-ui,
+    sans-serif
+  );
+  --font-ui: var(
+    --font-body-loaded,
+    "PingFang SC",
+    "Microsoft YaHei",
+    ui-sans-serif,
+    system-ui,
+    sans-serif
+  );
   margin: 0;
   background: var(--ink);
   color: var(--text);
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
+  font-kerning: normal;
+  font-synthesis-weight: none;
   line-height: 1.5;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -121,13 +156,18 @@ svg {
 
 .brand-mark strong {
   color: var(--text);
+  font-family: var(--font-ui);
   font-size: 13px;
-  font-weight: 750;
+  font-weight: 800;
+  letter-spacing: 0;
 }
 
 .brand-mark small {
   color: rgba(255, 255, 255, 0.68);
+  font-family: var(--font-display);
   font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   margin-top: 4px;
   text-transform: uppercase;
 }
@@ -147,8 +187,9 @@ svg {
   color: var(--ink);
   display: flex;
   flex: 1 1 0;
+  font-family: var(--font-ui);
   font-size: 13px;
-  font-weight: 720;
+  font-weight: 800;
   min-height: 38px;
   padding: 0 16px;
 }
@@ -179,10 +220,12 @@ svg {
 .language-switcher a {
   align-items: center;
   display: flex;
+  font-family: var(--font-display);
   font-size: 12px;
   font-weight: 700;
   height: 100%;
   justify-content: center;
+  letter-spacing: 0.02em;
   min-width: 42px;
   padding: 0 10px;
 }
@@ -198,8 +241,9 @@ svg {
   border-radius: 6px;
   color: var(--accent);
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 13px;
-  font-weight: 750;
+  font-weight: 800;
   height: 38px;
   padding: 0 18px;
 }
@@ -262,20 +306,25 @@ svg {
 }
 
 .hero-content h1 {
+  font-family: var(--font-display);
   font-size: clamp(58px, 8.2vw, 124px);
-  font-weight: 330;
+  font-weight: 500;
   letter-spacing: 0;
-  line-height: 0.86;
+  line-height: 0.84;
   margin: 0;
   max-width: 850px;
+  overflow-wrap: anywhere;
 }
 
 .hero-content p {
   color: rgba(255, 255, 255, 0.64);
+  font-family: var(--font-body);
   font-size: clamp(17px, 1.4vw, 22px);
-  line-height: 1.42;
+  font-weight: 400;
+  line-height: 1.5;
   margin: clamp(32px, 7vh, 92px) 0 0;
   max-width: 680px;
+  overflow-wrap: break-word;
 }
 
 .hero-actions {
@@ -289,9 +338,11 @@ svg {
 .button-secondary {
   align-items: center;
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 800;
   gap: 16px;
+  letter-spacing: 0;
   min-height: 46px;
   padding: 0 20px;
 }
@@ -324,9 +375,14 @@ svg {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.78);
   display: flex;
+  font-family: var(--font-ui);
   font-size: 14px;
+  font-weight: 600;
   gap: 10px;
+  line-height: 1.35;
   min-height: 70px;
+  min-width: 0;
+  overflow-wrap: break-word;
   padding-right: 18px;
 }
 
@@ -354,9 +410,11 @@ svg {
 .statement-label {
   align-items: center;
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
   gap: 9px;
+  letter-spacing: 0.02em;
   margin-bottom: clamp(54px, 14vh, 150px);
   text-transform: uppercase;
 }
@@ -369,20 +427,24 @@ svg {
 }
 
 .statement-section h2 {
+  font-family: var(--font-display);
   font-size: clamp(50px, 7.4vw, 112px);
-  font-weight: 340;
-  line-height: 0.94;
+  font-weight: 500;
+  line-height: 0.9;
   margin: 0;
   max-width: 980px;
+  overflow-wrap: anywhere;
 }
 
 .statement-section p {
   color: rgba(0, 0, 0, 0.28);
+  font-family: var(--font-display);
   font-size: clamp(38px, 5vw, 76px);
-  font-weight: 330;
-  line-height: 1;
+  font-weight: 400;
+  line-height: 0.98;
   margin: 18px 0 0;
   max-width: 1050px;
+  overflow-wrap: anywhere;
 }
 
 .statement-section ul {
@@ -402,18 +464,22 @@ svg {
   background: rgba(0, 0, 0, 0.08);
   border-radius: 999px;
   display: grid;
+  font-family: var(--font-ui);
   font-size: 12px;
-  font-weight: 740;
+  font-weight: 700;
   gap: 8px;
   grid-template-columns: auto auto;
+  line-height: 1.1;
   min-height: 34px;
   padding: 0 12px;
 }
 
 .statement-section li span {
   color: var(--ink);
+  font-family: var(--font-number);
   font-size: 16px;
   font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 .story-intro {
@@ -429,11 +495,17 @@ svg {
 .insights-section h2,
 .news-hero h1,
 .article-detail h1 {
+  font-family: var(--font-display);
   font-size: 50px;
-  font-weight: 720;
+  font-weight: 600;
   letter-spacing: 0;
-  line-height: 1;
+  line-height: 0.96;
   margin: 0;
+}
+
+.news-hero h1,
+.article-detail h1 {
+  font-family: var(--font-body);
 }
 
 .story-intro p,
@@ -441,9 +513,11 @@ svg {
 .news-hero p,
 .article-excerpt {
   color: var(--muted);
+  font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.55;
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 .story-shell {
@@ -794,6 +868,7 @@ svg {
   background: rgba(0, 0, 0, 0.88);
   color: var(--text);
   display: flex;
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 860;
   min-height: 28px;
@@ -871,8 +946,9 @@ svg {
   background: var(--ink);
   color: var(--text);
   display: flex;
+  font-family: var(--font-ui);
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 800;
   gap: 8px;
   left: var(--pin-x);
   padding: 8px 11px;
@@ -914,6 +990,7 @@ svg {
   display: block;
   min-height: auto;
   opacity: 0;
+  overflow-wrap: break-word;
   padding: 30px;
   pointer-events: none;
   position: absolute;
@@ -939,8 +1016,9 @@ svg {
   align-items: center;
   color: rgba(255, 255, 255, 0.56);
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
   gap: 8px;
   text-transform: none;
 }
@@ -957,18 +1035,24 @@ svg {
 }
 
 .story-card h3 {
+  font-family: var(--font-display);
   font-size: clamp(30px, 3vw, 48px);
-  font-weight: 330;
-  line-height: 1.02;
+  font-weight: 500;
+  line-height: 0.98;
   margin: 36px 0 22px;
   max-width: 390px;
+  overflow-wrap: anywhere;
 }
 
 .story-card p {
   color: rgba(255, 255, 255, 0.74);
+  font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.56;
   margin: 0;
+  max-width: 36rem;
+  overflow-wrap: break-word;
 }
 
 .story-card.solution p {
@@ -1025,15 +1109,19 @@ svg {
 .story-meter small {
   color: rgba(255, 255, 255, 0.58);
   display: block;
+  font-family: var(--font-ui);
   font-size: 13px;
+  font-weight: 700;
   margin-bottom: 8px;
 }
 
 .story-meter strong {
   align-items: baseline;
   display: flex;
+  font-family: var(--font-number);
   font-size: clamp(42px, 5vw, 82px);
-  font-weight: 320;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
   gap: 8px;
   line-height: 0.9;
 }
@@ -1172,6 +1260,7 @@ svg {
   align-items: center;
   color: rgba(255, 255, 255, 0.68);
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 820;
   gap: 8px;
@@ -1189,19 +1278,23 @@ svg {
 }
 
 .webgl-copy h2 {
+  font-family: var(--font-display);
   font-size: clamp(44px, 6.4vw, 96px);
-  font-weight: 320;
+  font-weight: 500;
   letter-spacing: 0;
-  line-height: 0.92;
+  line-height: 0.88;
   margin: 28px 0 0;
+  overflow-wrap: anywhere;
 }
 
 .webgl-copy p {
   color: rgba(255, 255, 255, 0.68);
+  font-family: var(--font-body);
   font-size: clamp(16px, 1.3vw, 19px);
-  line-height: 1.5;
+  line-height: 1.56;
   margin: 28px 0 0;
   max-width: 450px;
+  overflow-wrap: break-word;
 }
 
 .webgl-panel {
@@ -1234,16 +1327,20 @@ svg {
 .webgl-panel strong {
   color: var(--accent);
   display: block;
+  font-family: var(--font-number);
   font-size: clamp(46px, 4.8vw, 74px);
-  font-weight: 320;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
   line-height: 0.88;
 }
 
 .webgl-panel p {
   color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-body);
   font-size: 15px;
-  line-height: 1.48;
+  line-height: 1.56;
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 .webgl-actions {
@@ -1258,8 +1355,10 @@ svg {
   border-radius: 6px;
   color: var(--text);
   cursor: pointer;
+  font-family: var(--font-number);
   font-size: 12px;
   font-weight: 820;
+  font-variant-numeric: tabular-nums;
   height: 40px;
   width: 48px;
 }
@@ -1271,12 +1370,27 @@ svg {
   color: var(--ink);
 }
 
+body.grid-volatility-active .site-header {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -18px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
 .grid-volatility-scene {
-  background: #050505;
+  --grid-card-left: clamp(24px, 2.5vw, 48px);
+  --grid-on-yellow: #fff313;
+  --grid-on-red: #ff4e13;
+  --grid-stage-black: #000;
+  background: #fff;
   color: #fff;
-  min-height: 620svh;
+  min-height: 2200lvh;
   overflow: clip;
   padding: 0;
+  position: relative;
+  z-index: 60;
 }
 
 .grid-volatility-scene::before,
@@ -1285,19 +1399,18 @@ svg {
 }
 
 .webgl-sticky {
-  background:
-    radial-gradient(circle at var(--pin-x, 58%) var(--pin-y, 45%), rgba(255, 242, 0, 0.18), transparent 18vw),
-    radial-gradient(circle at 80% 28%, rgba(255, 255, 255, 0.13), transparent 24vw),
-    linear-gradient(90deg, #050505 0%, #050505 30%, rgba(5, 5, 5, 0.9) 48%, #050505 100%);
-  height: 100svh;
+  background: #fff;
+  height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 .grid-volatility-scene .webgl-stage {
-  background: #050505;
-  filter: contrast(1.18) saturate(0.82) brightness(0.9);
+  background: #fff;
+  filter: contrast(1.08) saturate(0.82) brightness(1.04);
   inset: 0;
   opacity: 0;
   transition: opacity 520ms ease;
@@ -1310,9 +1423,8 @@ svg {
 
 .grid-scene-wash {
   background:
-    radial-gradient(circle at var(--pin-x, 58%) var(--pin-y, 45%), rgba(255, 242, 0, 0.26), transparent 18vw),
-    linear-gradient(90deg, rgba(5, 5, 5, 0.88) 0%, rgba(5, 5, 5, 0.18) 42%, rgba(5, 5, 5, 0.46) 100%),
-    linear-gradient(180deg, rgba(5, 5, 5, 0.68) 0%, rgba(5, 5, 5, 0) 44%, #050505 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0) 16%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0) 18%, rgba(255, 255, 255, 0) 82%, rgba(255, 255, 255, 0.78) 100%);
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -1320,28 +1432,30 @@ svg {
 }
 
 .grid-info-card {
-  background: rgba(5, 5, 5, 0.93);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 8px;
+  background: #050505;
+  border: 0;
+  border-radius: 1.111vw;
   color: #fff;
   display: grid;
-  gap: clamp(20px, 3.2vh, 38px);
-  left: clamp(36px, 4vw, 60px);
-  max-width: min(430px, calc(100vw - 72px));
-  min-height: clamp(280px, 34vh, 360px);
-  padding: clamp(28px, 3vw, 46px);
+  gap: 0;
+  left: var(--grid-card-left);
+  max-width: min(520px, calc(100vw - 72px));
+  min-height: clamp(290px, 17.3vw, 360px);
+  overflow-wrap: break-word;
+  padding: clamp(28px, 2.92vw, 56px) clamp(30px, 2.08vw, 42px);
   position: absolute;
-  top: clamp(108px, 12vh, 148px);
-  transform: translate3d(0, 0, 0);
+  top: clamp(20px, 1.45vw, 34px);
+  transform: translate3d(0, calc((1 - var(--grid-progress, 0)) * 8px), 0);
   transition:
     background 280ms ease,
-    color 280ms ease;
-  width: 30vw;
+    color 280ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: min(30vw, 520px);
   z-index: 4;
 }
 
 .grid-info-card.solution {
-  background: var(--accent);
+  background: var(--grid-on-yellow);
   color: #050505;
 }
 
@@ -1349,8 +1463,9 @@ svg {
   align-items: center;
   color: rgba(255, 255, 255, 0.6);
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 12px;
-  font-weight: 620;
+  font-weight: 700;
   gap: 8px;
   line-height: 1;
 }
@@ -1360,8 +1475,9 @@ svg {
 }
 
 .grid-info-kicker span {
-  background: var(--danger);
-  border-radius: 50%;
+  background: #9b9b9b;
+  border-radius: 2px;
+  clip-path: polygon(50% 0, 100% 86%, 0 86%);
   display: inline-block;
   height: 9px;
   position: relative;
@@ -1373,19 +1489,23 @@ svg {
 }
 
 .grid-info-card h2 {
-  font-size: clamp(34px, 3vw, 56px);
-  font-weight: 300;
+  font-family: var(--font-display);
+  font-size: clamp(34px, 2.34vw, 46px);
+  font-weight: 500;
   letter-spacing: 0;
-  line-height: 1;
-  margin: 0;
+  line-height: 1.06;
+  margin: clamp(50px, 4.2vw, 82px) 0 0;
+  overflow-wrap: anywhere;
 }
 
 .grid-info-card p {
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(15px, 1.1vw, 18px);
-  font-weight: 360;
-  line-height: 1.48;
-  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(20px, 1.34vw, 28px);
+  font-weight: 400;
+  line-height: 1.5;
+  margin: clamp(26px, 1.95vw, 38px) 0 0;
+  overflow-wrap: break-word;
 }
 
 .grid-info-card.solution p {
@@ -1394,6 +1514,7 @@ svg {
 
 .grid-info-card small {
   color: currentColor;
+  font-family: var(--font-ui);
   font-size: 12px;
   opacity: 0.62;
 }
@@ -1402,14 +1523,81 @@ svg {
   background: transparent;
   border-radius: 0;
   display: grid;
-  gap: 18px;
-  left: clamp(60px, 16vw, 300px);
-  max-width: min(360px, calc(100vw - 56px));
+  gap: 14px;
+  left: calc(var(--grid-card-left) + 24px);
+  max-width: min(282px, calc(100vw - 56px));
   padding: 0;
   position: absolute;
-  top: clamp(625px, 70vh, 720px);
-  width: 28vw;
+  top: clamp(384px, 30.9vw, 462px);
+  width: min(19.58vw, 282px);
   z-index: 4;
+}
+
+.grid-demand-card {
+  background: #050505;
+  border-radius: 1.111vw;
+  color: #fff;
+  display: grid;
+  gap: clamp(20px, 1.7vw, 34px);
+  left: var(--grid-card-left);
+  max-width: min(520px, calc(100vw - 72px));
+  min-height: clamp(228px, 14.2vw, 286px);
+  padding: clamp(26px, 2.35vw, 46px) clamp(30px, 2.08vw, 42px) clamp(18px, 1.35vw, 28px);
+  position: absolute;
+  top: clamp(318px, 25.1vw, 485px);
+  width: min(30vw, 520px);
+  z-index: 4;
+}
+
+.demand-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  row-gap: 10px;
+}
+
+.demand-head small {
+  color: rgba(255, 255, 255, 0.64);
+  font-family: var(--font-ui);
+  font-size: clamp(14px, 1.04vw, 24px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.demand-head strong {
+  align-items: baseline;
+  color: #f7f7f7;
+  display: flex;
+  font-family: var(--font-number);
+  font-size: clamp(52px, 3.7vw, 78px);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  gap: 7px;
+  grid-row: span 2;
+  letter-spacing: 0;
+  line-height: 0.76;
+}
+
+.demand-head strong span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(18px, 1.2vw, 25px);
+  font-weight: 500;
+}
+
+.demand-head em {
+  color: #f7f7f7;
+  font-family: var(--font-number);
+  font-size: clamp(20px, 1.34vw, 28px);
+  font-style: normal;
+  font-weight: 500;
+  justify-self: end;
+}
+
+.demand-chart {
+  display: block;
+  height: auto;
+  overflow: visible;
+  width: 100%;
 }
 
 .capacity-head {
@@ -1420,16 +1608,19 @@ svg {
 
 .capacity-head small {
   color: rgba(255, 255, 255, 0.52);
+  font-family: var(--font-ui);
   font-size: 12px;
-  font-weight: 420;
+  font-weight: 700;
 }
 
 .capacity-head strong {
   align-items: baseline;
   color: #fff;
   display: flex;
-  font-size: clamp(56px, 5.2vw, 86px);
-  font-weight: 300;
+  font-family: var(--font-number);
+  font-size: clamp(40px, 2.5vw, 52px);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
   gap: 5px;
   line-height: 0.9;
 }
@@ -1437,7 +1628,7 @@ svg {
 .capacity-head strong span {
   color: rgba(255, 255, 255, 0.66);
   font-size: 17px;
-  font-weight: 360;
+  font-weight: 500;
 }
 
 .capacity-track {
@@ -1455,30 +1646,51 @@ svg {
 }
 
 .capacity-track::before {
-  animation: grid-capacity-charge 1.2s linear infinite;
-  background: linear-gradient(90deg, #ff3b1f 0%, #ff3b1f 28%, #e31f13 52%, #ff3b1f 78%, #ff3b1f 100%);
-  background-size: 360% 100%;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent 24%),
+    var(--grid-on-red);
   border-right: 1px solid #050505;
   content: "";
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
-  width: var(--capacity-progress);
+  transform: scaleX(var(--capacity-scale, 0));
+  transform-origin: left center;
+  transition:
+    background-color 260ms ease,
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+}
+
+.capacity-track::after {
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  content: "";
+  height: 100%;
+  left: 0;
+  opacity: 0.18;
+  position: absolute;
+  top: 0;
+  transform: translate3d(calc((var(--capacity-scale, 0) * 100%) - 52px), 0, 0);
+  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 52px;
 }
 
 .grid-capacity-card.solution .capacity-track::before {
-  animation-duration: 1.8s;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, #fff87d 52%, var(--accent) 78%, var(--accent) 100%);
-  background-size: 360% 100%;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3), transparent 24%),
+    var(--grid-on-yellow);
 }
 
 .capacity-track span {
   align-items: center;
   color: #050505;
   display: inline-flex;
+  font-family: var(--font-number);
   font-size: 14px;
-  font-weight: 430;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   gap: 7px;
   left: 13px;
   position: absolute;
@@ -1498,15 +1710,18 @@ svg {
 
 .webgl-map-pin {
   align-items: center;
-  background: #050505;
+  background: transparent;
   border: 0;
-  border-radius: 4px;
-  box-shadow: 0 0 34px rgba(255, 242, 0, 0.16);
+  border-radius: 0;
+  box-shadow: none;
   color: #fff;
   display: flex;
+  font-family: var(--font-number);
   font-size: 12px;
   font-weight: 820;
-  height: 42px;
+  font-variant-numeric: tabular-nums;
+  gap: 8px;
+  height: 44px;
   justify-content: center;
   left: var(--pin-x);
   position: absolute;
@@ -1516,40 +1731,129 @@ svg {
     left 420ms cubic-bezier(0.22, 1, 0.36, 1),
     top 420ms cubic-bezier(0.22, 1, 0.36, 1),
     background 240ms ease;
-  width: 72px;
-  z-index: 3;
+  width: auto;
+  z-index: 5;
 }
 
 .webgl-map-pin::before {
-  background: var(--danger);
-  content: "";
-  height: 10px;
-  margin-right: 8px;
-  width: 10px;
+  content: none;
 }
 
 .webgl-map-pin.solution {
-  background: var(--accent);
+  background: transparent;
   color: #050505;
 }
 
-.webgl-map-pin.solution::before {
+.power-status-icon {
+  background: #2f2e2d;
+  border-radius: 3px;
+  display: grid;
+  height: 44px;
+  place-items: center;
+  position: relative;
+  width: 44px;
+}
+
+.power-status-icon i {
+  background: var(--grid-on-red);
+  clip-path: polygon(18% 10%, 82% 10%, 62% 44%, 78% 44%, 35% 90%, 44% 54%, 22% 54%);
+  display: block;
+  height: 27px;
+  width: 24px;
+}
+
+.power-status-icon b {
+  background: #eee;
+  height: 7px;
+  position: absolute;
+  right: 9px;
+  top: 11px;
+  transform: rotate(22deg);
+  width: 2px;
+}
+
+.webgl-map-pin.solution .power-status-icon {
+  background: var(--grid-on-yellow);
+}
+
+.webgl-map-pin.solution .power-status-icon i {
   background: #050505;
 }
 
+.webgl-map-pin.solution .power-status-icon b {
+  display: none;
+}
+
+.grid-volatility-scene[data-storage-closeup="true"] .webgl-map-pin {
+  opacity: 0;
+  transform:
+    translate(-50%, -50%)
+    scale(0.72);
+}
+
+.grid-bess-badge {
+  align-items: center;
+  background: #050505;
+  border-radius: 8px;
+  box-shadow: 0 13px 26px rgba(0, 0, 0, 0.24);
+  color: #fff;
+  display: inline-flex;
+  font-family: var(--font-number);
+  font-size: clamp(18px, 1.16vw, 24px);
+  font-weight: 600;
+  gap: 10px;
+  left: 54.2%;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 12px 18px 13px;
+  pointer-events: none;
+  position: absolute;
+  top: 34.2%;
+  transform: translate(-50%, -50%);
+  transition:
+    opacity 240ms ease,
+    transform 300ms ease;
+  z-index: 6;
+}
+
+.grid-bess-badge::after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid #050505;
+  bottom: -10px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.grid-bess-badge span {
+  background: var(--grid-on-yellow);
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+
+.grid-bess-badge {
+  opacity: 0;
+  transform: translate(-50%, -44%) scale(0.92);
+}
+
 .grid-scene-copy {
-  bottom: clamp(86px, 9vh, 118px);
+  display: none;
+  bottom: clamp(68px, 7vh, 90px);
   color: rgba(255, 255, 255, 0.72);
   max-width: 330px;
-  opacity: 0.7;
+  opacity: 0.58;
   position: absolute;
-  right: clamp(24px, 3.4vw, 54px);
+  right: clamp(24px, 3vw, 44px);
   z-index: 3;
 }
 
 .grid-scene-copy span {
   align-items: center;
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 820;
   gap: 8px;
@@ -1565,57 +1869,116 @@ svg {
 }
 
 .grid-scene-copy h3 {
-  font-size: 28px;
-  font-weight: 430;
-  line-height: 1.04;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1;
   margin: 16px 0 0;
 }
 
 .grid-scene-copy p {
+  font-family: var(--font-body);
   font-size: 14px;
-  line-height: 1.42;
+  line-height: 1.5;
   margin: 14px 0 0;
 }
 
 .grid-volatility-scene .webgl-actions {
-  bottom: clamp(28px, 4vh, 48px);
-  display: flex;
-  gap: 8px;
+  bottom: 2.083vw;
+  display: grid;
+  gap: 5px;
   margin: 0;
   position: absolute;
-  right: clamp(24px, 3vw, 42px);
-  z-index: 5;
+  right: 1.388vw;
+  z-index: 8;
 }
 
-.grid-volatility-scene .webgl-actions button {
-  background: rgba(5, 5, 5, 0.76);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  color: #fff;
-  height: 40px;
-  width: 50px;
+.grid-volatility-scene .webgl-actions button,
+.dots-button {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 0;
+  border-radius: 0.416vw;
+  color: rgba(255, 243, 19, 0.58);
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 28px;
+  justify-items: center;
+  padding: 6px;
+  width: 28px;
 }
 
-.grid-volatility-scene .webgl-actions button[aria-selected="true"],
 .grid-volatility-scene .webgl-actions button:hover,
 .grid-volatility-scene .webgl-actions button:focus-visible {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--grid-on-yellow);
   color: #050505;
+}
+
+.grid-volatility-scene .webgl-actions button:disabled {
+  color: rgba(255, 255, 255, 0.14);
+  cursor: default;
+}
+
+.grid-volatility-scene .webgl-actions button:disabled:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.14);
+}
+
+.dots-button span {
+  background: currentColor;
+  border-radius: 50%;
+  display: block;
+  height: 3px;
+  width: 3px;
+}
+
+.arrow-up span:nth-child(4),
+.arrow-up span:nth-child(6),
+.arrow-up span:nth-child(7),
+.arrow-up span:nth-child(8),
+.arrow-up span:nth-child(9),
+.arrow-down span:nth-child(1),
+.arrow-down span:nth-child(2),
+.arrow-down span:nth-child(3),
+.arrow-down span:nth-child(4),
+.arrow-down span:nth-child(6) {
+  opacity: 0.26;
+}
+
+.webgl-step-rail {
+  bottom: clamp(88px, 8vw, 120px);
+  display: grid;
+  gap: 10px;
+  position: absolute;
+  right: clamp(30px, 2.1vw, 42px);
+  z-index: 7;
+}
+
+.webgl-step-rail span {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  height: 4px;
+  width: 4px;
+}
+
+.webgl-step-rail span.is-active {
+  background: var(--grid-on-yellow);
 }
 
 .grid-interaction-hint {
   align-items: center;
-  background: rgba(5, 5, 5, 0.68);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 999px;
-  bottom: clamp(28px, 4vh, 48px);
+  bottom: 2.083vw;
   color: rgba(255, 255, 255, 0.72);
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 12px;
-  font-weight: 720;
+  font-weight: 800;
   gap: 8px;
-  left: clamp(36px, 4vw, 60px);
+  left: var(--grid-card-left);
   padding: 10px 14px;
   position: absolute;
   text-transform: uppercase;
@@ -1643,97 +2006,267 @@ svg {
   width: 3px;
 }
 
-@keyframes grid-capacity-charge {
-  from {
-    background-position: 0 50%;
+@keyframes storage-flow-line {
+  0% {
+    opacity: 0;
+    transform: translateX(-35%) scaleX(0.12);
   }
 
-  to {
-    background-position: 100% 50%;
+  35% {
+    opacity: 1;
+    transform: translateX(12%) scaleX(0.48);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(110%) scaleX(0.16);
   }
 }
 
 .wind-experience {
-  background: #030303;
+  background: #000;
   color: var(--text);
-  min-height: 100svh;
-  overflow: hidden;
+  min-height: calc(var(--sequence-steps) * 118vh);
+  overflow: clip;
   position: relative;
 }
 
-.wind-stage {
-  cursor: grab;
+.wind-sequence-sticky {
+  background: #000;
+  height: 100svh;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+}
+
+.wind-turbine-scene,
+.wind-sequence-wash {
   inset: 0;
   position: absolute;
-  touch-action: none;
 }
 
-.wind-stage[data-dragging="true"] {
-  cursor: grabbing;
+.wind-turbine-scene {
+  background:
+    radial-gradient(circle at 58% 38%, rgba(255, 243, 19, 0.14), transparent 28vw),
+    linear-gradient(90deg, #000 0%, #050505 34%, #11110d 62%, #000 100%);
+  overflow: hidden;
 }
 
-.wind-stage canvas {
-  display: block;
-  height: 100%;
-  width: 100%;
+.wind-field-grid {
+  background:
+    linear-gradient(rgba(255, 243, 19, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 243, 19, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  inset: 0;
+  mask-image: radial-gradient(circle at 58% 48%, #000 0, transparent 68%);
+  opacity: 0.74;
+  position: absolute;
 }
 
-.wind-experience::before,
-.wind-experience::after {
+.wind-turbine {
+  filter: contrast(1.08) saturate(0.18) brightness(0.92);
+  height: var(--turbine-height);
+  position: absolute;
+  transform:
+    translate3d(calc(var(--sequence-progress) * -42px), calc(var(--sequence-progress) * 12px), 0)
+    scale(var(--turbine-scale));
+  transform-origin: 50% 100%;
+  width: var(--turbine-width);
+  z-index: 1;
+}
+
+.wind-tower {
+  background: linear-gradient(90deg, #6b6b6b 0%, #f3f3f0 42%, #9b9b9b 100%);
+  border-radius: 999px 999px 0 0;
+  bottom: 0;
+  box-shadow: 20px 8px 30px rgba(0, 0, 0, 0.26);
+  height: 74%;
+  left: 52%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 4.8%;
+}
+
+.wind-nacelle {
+  background: linear-gradient(90deg, #d8d8d4, #f4f4ef 48%, #8d8d8a);
+  border-radius: 999px 7px 7px 999px;
+  height: 5.6%;
+  left: 52%;
+  position: absolute;
+  top: 25.8%;
+  transform: translate(-5%, -50%);
+  width: 18%;
+  z-index: 2;
+}
+
+.wind-rotor {
+  animation: wind-turbine-spin 2.8s linear infinite;
+  height: 58%;
+  left: 49%;
+  opacity: var(--turbine-opacity);
+  position: absolute;
+  top: 25.8%;
+  transform: translate(-50%, -50%);
+  transform-origin: 50% 50%;
+  width: 58%;
+  z-index: 3;
+}
+
+.wind-rotor::before {
+  background: radial-gradient(circle, #fff 0 32%, #bdbdb7 34% 100%);
+  box-shadow: 0 0 18px rgba(255, 243, 19, 0.18);
+  border-radius: 50%;
   content: "";
+  height: 12%;
+  left: 44%;
+  position: absolute;
+  top: 44%;
+  width: 12%;
+  z-index: 4;
+}
+
+.wind-rotor i {
+  background: linear-gradient(90deg, #fff 0%, #e4e4dc 54%, #898985 100%);
+  border-radius: 999px 60% 60% 999px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.12);
+  display: block;
+  height: 7%;
+  left: 50%;
+  position: absolute;
+  top: 46.5%;
+  transform-origin: 0 50%;
+  width: 53%;
+}
+
+.wind-rotor i:nth-child(1) {
+  transform: rotate(-90deg);
+}
+
+.wind-rotor i:nth-child(2) {
+  transform: rotate(30deg);
+}
+
+.wind-rotor i:nth-child(3) {
+  transform: rotate(150deg);
+}
+
+.wind-turbine-main {
+  --turbine-opacity: 0.92;
+  --turbine-height: clamp(410px, 48vw, 680px);
+  --turbine-scale: 1;
+  --turbine-width: clamp(280px, 31vw, 480px);
+  right: clamp(280px, 30vw, 460px);
+  top: clamp(118px, 15vh, 180px);
+}
+
+.wind-turbine-secondary {
+  --turbine-opacity: 0.36;
+  --turbine-height: clamp(330px, 35vw, 510px);
+  --turbine-scale: 0.68;
+  --turbine-width: clamp(230px, 23vw, 360px);
+  right: clamp(20px, 8vw, 130px);
+  top: clamp(230px, 30vh, 330px);
+}
+
+.wind-turbine-tertiary {
+  --turbine-opacity: 0.22;
+  --turbine-height: clamp(280px, 28vw, 420px);
+  --turbine-scale: 0.48;
+  --turbine-width: clamp(200px, 19vw, 300px);
+  right: clamp(520px, 48vw, 760px);
+  top: clamp(370px, 48vh, 520px);
+}
+
+.wind-energy-line {
+  animation: wind-line-flow 2.4s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 243, 19, 0.84), transparent);
+  height: 2px;
+  opacity: 0.62;
+  position: absolute;
+  right: 0;
+  transform: translateX(calc(var(--sequence-progress) * -80px));
+  transform-origin: right center;
+  z-index: 2;
+}
+
+.wind-energy-line.line-one {
+  top: 42%;
+  width: 58vw;
+}
+
+.wind-energy-line.line-two {
+  animation-delay: -0.8s;
+  top: 54%;
+  width: 44vw;
+}
+
+.wind-energy-line.line-three {
+  animation-delay: -1.35s;
+  top: 66%;
+  width: 50vw;
+}
+
+.wind-sequence-wash {
+  background:
+    radial-gradient(circle at 64% 40%, rgba(255, 243, 19, 0.22), transparent 21vw),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.62) 34%, rgba(0, 0, 0, 0.18) 58%, rgba(0, 0, 0, 0.78) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, transparent 48%, rgba(0, 0, 0, 0.76) 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.wind-sequence-sticky::after {
+  background:
+    linear-gradient(rgba(255, 243, 19, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 243, 19, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px;
+  content: "";
+  inset: 0;
+  mask-image: radial-gradient(circle at 56% 44%, #000 0, transparent 65%);
+  opacity: 0.72;
   pointer-events: none;
   position: absolute;
-  z-index: 1;
+  z-index: 4;
 }
 
-.wind-experience::before {
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.28) 44%, rgba(0, 0, 0, 0.7) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), #030303 100%);
-  inset: 0;
+@keyframes wind-turbine-spin {
+  to {
+    rotate: 360deg;
+  }
 }
 
-.wind-experience::after {
-  background:
-    linear-gradient(rgba(255, 242, 0, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 242, 0, 0.07) 1px, transparent 1px);
-  background-size: 68px 68px;
-  inset: 0;
-  mask-image: radial-gradient(circle at 57% 44%, #000 0, transparent 62%);
-  opacity: 0.56;
-}
+@keyframes wind-line-flow {
+  0% {
+    opacity: 0;
+    scale: 0.2 1;
+  }
 
-.wind-reference-image {
-  background-image: url("/assets/windmill.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  bottom: clamp(150px, 18vh, 220px);
-  filter: grayscale(1) contrast(1.08) brightness(0.78);
-  height: min(42vh, 420px);
-  opacity: 0.22;
-  pointer-events: none;
-  position: absolute;
-  right: clamp(24px, 7vw, 110px);
-  width: min(28vw, 260px);
-  z-index: 1;
+  35% {
+    opacity: 0.72;
+  }
+
+  100% {
+    opacity: 0;
+    scale: 1 1;
+  }
 }
 
 .wind-copy {
-  left: clamp(24px, 5vw, 72px);
-  max-width: 650px;
+  left: clamp(22px, 5vw, 72px);
+  max-width: min(760px, calc(100vw - 44px));
   position: absolute;
-  top: clamp(112px, 18vh, 178px);
-  z-index: 2;
+  top: clamp(120px, 18vh, 176px);
+  z-index: 4;
 }
 
 .wind-copy span,
 .wind-panel small {
   align-items: center;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.64);
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
   gap: 8px;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -1749,37 +2282,46 @@ svg {
 }
 
 .wind-copy h1 {
-  font-size: clamp(52px, 7.2vw, 108px);
-  font-weight: 320;
+  font-family: var(--font-display);
+  font-size: clamp(58px, 8.8vw, 142px);
+  font-weight: 500;
   letter-spacing: 0;
-  line-height: 0.9;
-  margin: 28px 0 0;
+  line-height: 0.84;
+  margin: clamp(24px, 3vh, 36px) 0 0;
+  max-width: 900px;
+  overflow-wrap: anywhere;
 }
 
 .wind-copy p {
-  color: rgba(255, 255, 255, 0.68);
-  font-size: clamp(16px, 1.3vw, 19px);
-  line-height: 1.52;
+  color: rgba(255, 255, 255, 0.66);
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.58;
   margin: 28px 0 0;
-  max-width: 500px;
+  max-width: 510px;
+  overflow-wrap: break-word;
 }
 
 .wind-panel {
-  background: rgba(5, 5, 5, 0.84);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #050505;
+  border: 0;
   border-radius: 8px;
-  bottom: clamp(24px, 6vh, 72px);
+  bottom: clamp(32px, 7vh, 78px);
   display: grid;
-  gap: 14px;
-  padding: 24px;
+  gap: clamp(18px, 2.4vh, 30px);
+  min-height: clamp(248px, 32vh, 334px);
+  overflow-wrap: break-word;
+  padding: clamp(24px, 3vw, 44px);
   position: absolute;
-  right: clamp(24px, 5vw, 72px);
-  transform: translateY(14px);
+  right: clamp(22px, 5vw, 72px);
+  transform: translate3d(0, 18px, 0);
   transition:
+    background 280ms ease,
+    color 280ms ease,
     opacity 360ms ease,
     transform 360ms ease;
-  width: min(400px, calc(100vw - 48px));
-  z-index: 2;
+  width: min(420px, calc(100vw - 44px));
+  z-index: 5;
 }
 
 .wind-panel[data-ready="false"] {
@@ -1788,22 +2330,44 @@ svg {
 
 .wind-panel[data-ready="true"] {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+}
+
+.wind-panel.solution {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.wind-panel.solution small,
+.wind-panel.solution p {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.wind-panel.solution small::before {
+  background: var(--ink);
 }
 
 .wind-panel strong {
   color: var(--accent);
-  font-size: 54px;
-  font-weight: 320;
+  font-family: var(--font-number);
+  font-size: clamp(52px, 5.6vw, 86px);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0;
-  line-height: 0.92;
+  line-height: 0.9;
+}
+
+.wind-panel.solution strong {
+  color: var(--ink);
 }
 
 .wind-panel p {
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 14px;
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1vw, 16px);
+  line-height: 1.56;
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 .wind-actions {
@@ -1814,14 +2378,16 @@ svg {
 
 .wind-actions button {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
+  border: 0;
+  border-radius: 8px;
   color: var(--text);
   cursor: pointer;
+  font-family: var(--font-number);
   font-size: 12px;
-  font-weight: 840;
-  height: 34px;
-  width: 50px;
+  font-weight: 720;
+  font-variant-numeric: tabular-nums;
+  height: 38px;
+  width: 44px;
 }
 
 .wind-actions button[aria-selected="true"],
@@ -1830,6 +2396,38 @@ svg {
   background: var(--accent);
   color: var(--ink);
   outline: none;
+}
+
+.wind-panel.solution .wind-actions button {
+  background: rgba(0, 0, 0, 0.12);
+  color: var(--ink);
+}
+
+.wind-panel.solution .wind-actions button[aria-selected="true"],
+.wind-panel.solution .wind-actions button:hover,
+.wind-panel.solution .wind-actions button:focus-visible {
+  background: var(--ink);
+  color: var(--text);
+}
+
+.wind-sequence-progress {
+  bottom: 34px;
+  display: grid;
+  gap: 12px;
+  position: absolute;
+  right: 24px;
+  z-index: 6;
+}
+
+.wind-sequence-progress span {
+  background: rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  height: 8px;
+  width: 8px;
+}
+
+.wind-sequence-progress span.is-active {
+  background: var(--accent);
 }
 
 .metric-line.challenge.is-active span {
@@ -1851,10 +2449,12 @@ svg {
 }
 
 .impact-band h2 {
+  font-family: var(--font-display);
   font-size: 24px;
-  font-weight: 760;
-  line-height: 1.15;
+  font-weight: 600;
+  line-height: 1.05;
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .impact-grid {
@@ -1874,8 +2474,10 @@ svg {
 .deployment-stats strong {
   color: var(--accent);
   display: block;
+  font-family: var(--font-number);
   font-size: 30px;
   font-weight: 820;
+  font-variant-numeric: tabular-nums;
   line-height: 1;
 }
 
@@ -1883,8 +2485,12 @@ svg {
 .deployment-stats span {
   color: var(--muted);
   display: block;
+  font-family: var(--font-ui);
   font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
   margin-top: 10px;
+  overflow-wrap: break-word;
 }
 
 .deployment-section,
@@ -1910,6 +2516,7 @@ svg {
 
 .section-heading a {
   border-bottom: 1px solid currentColor;
+  font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 800;
 }
@@ -1951,14 +2558,19 @@ svg {
 
 .deployment-feature strong {
   display: block;
+  font-family: var(--font-number);
   font-size: 58px;
   font-weight: 680;
+  font-variant-numeric: tabular-nums;
   line-height: 1;
 }
 
 .deployment-feature span {
   display: block;
+  font-family: var(--font-ui);
   font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .deployment-stats {
@@ -1988,6 +2600,21 @@ svg {
   color: var(--text);
 }
 
+.insights-section .article-card h3,
+.insights-section .article-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.25vw, 34px);
+  font-weight: 500;
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+.insights-section .article-card p {
+  font-family: var(--font-body);
+  line-height: 1.58;
+  overflow-wrap: break-word;
+}
+
 .article-grid {
   display: grid;
   gap: 16px;
@@ -2013,6 +2640,7 @@ svg {
   background: rgba(255, 242, 0, 0.14);
   color: var(--accent);
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 800;
   padding: 5px 8px;
@@ -2027,6 +2655,7 @@ svg {
 .article-card time {
   color: var(--muted);
   display: block;
+  font-family: var(--font-ui);
   font-size: 12px;
   margin-top: 18px;
 }
@@ -2058,6 +2687,7 @@ svg {
   align-items: center;
   color: var(--accent);
   display: inline-flex;
+  font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 800;
   gap: 10px;
@@ -2079,19 +2709,23 @@ svg {
 }
 
 .cta-section h2 {
+  font-family: var(--font-display);
   font-size: 42px;
-  font-weight: 760;
-  line-height: 1.05;
+  font-weight: 600;
+  line-height: 0.98;
   margin: 0;
   max-width: 580px;
+  overflow-wrap: anywhere;
 }
 
 .cta-section p {
   color: rgba(0, 0, 0, 0.68);
+  font-family: var(--font-body);
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.55;
   margin: 18px 0 0;
   max-width: 580px;
+  overflow-wrap: break-word;
 }
 
 .site-footer {
@@ -2107,11 +2741,15 @@ svg {
 .footer-brand strong {
   color: var(--accent);
   display: block;
+  font-family: var(--font-display);
   font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .footer-brand p {
   color: var(--muted);
+  font-family: var(--font-body);
   margin: 12px 0 0;
   max-width: 280px;
 }
@@ -2126,6 +2764,7 @@ svg {
 .site-footer a,
 .site-footer span {
   color: var(--muted);
+  font-family: var(--font-ui);
   font-size: 14px;
   text-decoration: none;
 }
@@ -2460,12 +3099,14 @@ svg {
   }
 
   .grid-info-card,
-  .grid-capacity-card {
+  .grid-capacity-card,
+  .grid-demand-card {
     left: 28px;
     width: min(360px, calc(100vw - 56px));
   }
 
-  .grid-capacity-card {
+  .grid-capacity-card,
+  .grid-demand-card {
     top: auto;
     bottom: 116px;
   }
@@ -2568,11 +3209,11 @@ svg {
 
   .grid-volatility-scene {
     min-height: 600svh;
+    --grid-card-left: 18px;
   }
 
   .grid-info-card {
     gap: 20px;
-    left: 18px;
     min-height: 230px;
     padding: 22px;
     top: 92px;
@@ -2588,11 +3229,28 @@ svg {
   }
 
   .grid-capacity-card {
-    left: 18px;
+    left: var(--grid-card-left);
     padding: 18px;
     top: auto;
     bottom: 88px;
     width: calc(100vw - 36px);
+  }
+
+  .grid-demand-card {
+    border-radius: 14px;
+    bottom: 88px;
+    left: var(--grid-card-left);
+    min-height: 210px;
+    padding: 22px;
+    top: auto;
+    width: calc(100vw - 36px);
+  }
+
+  .grid-bess-badge {
+    font-size: 15px;
+    left: 58%;
+    padding: 10px 14px;
+    top: 48%;
   }
 
   .capacity-head strong {
@@ -2601,14 +3259,16 @@ svg {
 
   .webgl-map-pin {
     height: 42px;
-    width: 42px;
   }
 
   .grid-volatility-scene .webgl-actions {
     bottom: 24px;
-    left: 88px;
-    overflow-x: auto;
     right: 18px;
+  }
+
+  .webgl-step-rail {
+    bottom: 92px;
+    right: 30px;
   }
 
   .grid-interaction-hint {
@@ -2641,17 +3301,17 @@ svg {
   }
 
   .wind-experience {
-    min-height: 112svh;
+    min-height: calc(var(--sequence-steps) * 126vh);
   }
 
   .wind-copy {
     left: 18px;
     max-width: calc(100vw - 36px);
-    top: 98px;
+    top: 96px;
   }
 
   .wind-copy h1 {
-    font-size: clamp(42px, 12vw, 62px);
+    font-size: clamp(42px, 13vw, 68px);
   }
 
   .wind-copy p {
@@ -2661,20 +3321,20 @@ svg {
   .wind-panel {
     bottom: 22px;
     left: 18px;
+    min-height: 0;
     padding: 20px;
+    right: auto;
     width: calc(100vw - 36px);
   }
 
   .wind-panel strong {
-    font-size: 44px;
+    font-size: 48px;
   }
 
-  .wind-reference-image {
-    bottom: 260px;
-    height: 220px;
-    opacity: 0.16;
+  .wind-sequence-progress {
+    bottom: auto;
     right: 18px;
-    width: 120px;
+    top: 104px;
   }
 
   .map-image-wrap {
@@ -2758,6 +3418,8 @@ svg {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .capacity-track::before,
+  .capacity-track::after,
   .map-image-wrap,
   .story-card,
   .story-meter-track span {

@@ -1,0 +1,101 @@
+{
+  "sectionMetrics": {
+    "start": 2297.4921875,
+    "distance": 21000,
+    "height": 22000,
+    "viewport": 1000
+  },
+  "frames": [
+    {
+      "n": 1,
+      "p": 0.09,
+      "label": "Entry compressed / former 1-3"
+    },
+    {
+      "n": 2,
+      "p": 0.137,
+      "label": "Step 2 enter"
+    },
+    {
+      "n": 3,
+      "p": 0.19,
+      "label": "Step 2 zoom in"
+    },
+    {
+      "n": 4,
+      "p": 0.236,
+      "label": "Step 2 storage close-up"
+    },
+    {
+      "n": 5,
+      "p": 0.266,
+      "label": "Step 2 exit close-up"
+    },
+    {
+      "n": 6,
+      "p": 0.286,
+      "label": "Step 3 enter"
+    },
+    {
+      "n": 7,
+      "p": 0.36,
+      "label": "Step 3 mid"
+    },
+    {
+      "n": 8,
+      "p": 0.435,
+      "label": "Step 3 exit"
+    },
+    {
+      "n": 9,
+      "p": 0.449,
+      "label": "Step 4 enter"
+    },
+    {
+      "n": 10,
+      "p": 0.56,
+      "label": "Step 4 mid"
+    },
+    {
+      "n": 11,
+      "p": 0.675,
+      "label": "Step 4 exit"
+    },
+    {
+      "n": 12,
+      "p": 0.76,
+      "label": "Step 5 enter"
+    },
+    {
+      "n": 13,
+      "p": 0.87,
+      "label": "Step 5 pullback"
+    },
+    {
+      "n": 14,
+      "p": 0.986,
+      "label": "Final compressed / former 16-18"
+    }
+  ],
+  "files": [
+    "frame-01-p090.png",
+    "frame-02-p137.png",
+    "frame-03-p190.png",
+    "frame-04-p236.png",
+    "frame-05-p266.png",
+    "frame-06-p286.png",
+    "frame-07-p360.png",
+    "frame-08-p435.png",
+    "frame-09-p449.png",
+    "frame-10-p560.png",
+    "frame-11-p675.png",
+    "frame-12-p760.png",
+    "frame-13-p870.png",
+    "frame-14-p986.png"
+  ],
+  "contactSheet": "solutions-camera-contact-sheet-compressed.png",
+  "logs": [
+    "[console:info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+    "[console:log] [HMR] connected"
+  ]
+}

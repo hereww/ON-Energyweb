@@ -26,80 +26,80 @@ const windLabels: Record<
 > = {
   de: {
     body:
-      'Ein interaktives Wind- und Speicherfeld nach dem ON.energy WebGL-Motiv: Turbinen, Speicher und Netzrouten reagieren als ein System.',
-    eyebrow: 'WebGL Windfeld',
+      'Eine scrollgesteuerte Sequenz nach dem ON.energy Grid-Volatility-Motiv: Marktstress, lokale Speicher und flexible Netzausgänge erscheinen als zusammenhängende Szene.',
+    eyebrow: 'Grid Volatility',
     metaDescription:
-      'Interaktive Windpark-Visualisierung mit Turbinen, Speicher und Netzrouten.',
-    metaTitle: 'Windpark WebGL | Ostasien Energie',
+      'Scrollgesteuerte Grid-Volatility-Sequenz mit Speicher-, Netz- und Marktstress-Szenen.',
+    metaTitle: 'Grid Volatility Sequenz | Ostasien Energie',
     modes: [
       {
-        body: 'Turbinen drehen mit variabler Geschwindigkeit und speisen saubere Energie in den lokalen Netzknoten ein.',
-        label: 'Wind input',
-        metric: '6 turbines',
+        body: 'Der Spitzenbedarf steigt schneller als neue Übertragungskapazität. Die Szene bleibt dunkel, dicht und angespannt, wie im heruntergeladenen ON.energy-Sequenzmaterial.',
+        label: 'Challenge 1',
+        metric: 'Volatile market',
       },
       {
-        body: 'Batteriespeicher glätten Böen, verschieben Überschüsse und halten die Einspeisung planbar.',
-        label: 'Storage buffer',
-        metric: '300 MWh',
+        body: 'Lokale Speicher liegen nah an der Last, nehmen Überschüsse auf und geben Energie zurück, wenn das System sie braucht.',
+        label: 'Solution 1',
+        metric: 'Local storage',
       },
       {
-        body: 'Netzrouten bündeln Wind, Speicher und Umspannwerk in einer dispatchfähigen Flexibilitätszone.',
-        label: 'Grid export',
-        metric: '99.8%',
+        body: 'Speicher und Netzknoten werden als flexible Zone koordiniert, damit volatile Erzeugung als planbarer Ausgang nutzbar wird.',
+        label: 'Solution 2',
+        metric: 'Clean flexibility',
       },
     ],
-    title: 'Windenergie trifft flexible Speicher',
+    title: 'Grid volatility meets flexible storage',
   },
   en: {
     body:
-      'An interactive wind and storage field based on the ON.energy WebGL motif: turbines, batteries, and grid routes operating as one system.',
-    eyebrow: 'WebGL wind field',
+      'A scroll-controlled sequence based on the ON.energy Grid Volatility motif: market stress, local storage, and flexible export appear as one cinematic system.',
+    eyebrow: 'Grid Volatility',
     metaDescription:
-      'Interactive wind farm visualization with turbines, storage, and grid routes.',
-    metaTitle: 'Wind Farm WebGL | East Asia Power',
+      'Scroll-controlled Grid Volatility sequence with storage, grid, and market-stress scenes.',
+    metaTitle: 'Grid Volatility Sequence | East Asia Power',
     modes: [
       {
-        body: 'Turbines rotate at variable speed and feed clean generation into the local grid node.',
-        label: 'Wind input',
-        metric: '6 turbines',
+        body: 'Demand is rising faster than new transmission capacity. The scene stays dark, dense, and tense, matching the downloaded ON.energy sequence material.',
+        label: 'Challenge 1',
+        metric: 'Volatile market',
       },
       {
-        body: 'Battery storage absorbs gust-driven output, shifts surplus power, and makes delivery dispatchable.',
-        label: 'Storage buffer',
-        metric: '300 MWh',
+        body: 'Distributed storage sits close to load, absorbs surplus generation, and returns energy when the grid needs it.',
+        label: 'Solution 1',
+        metric: 'Local storage',
       },
       {
-        body: 'Grid routes coordinate wind, storage, and the substation as one flexible export zone.',
-        label: 'Grid export',
-        metric: '99.8%',
+        body: 'Storage and grid nodes work as a flexible zone, turning volatile generation into a more dependable export.',
+        label: 'Solution 2',
+        metric: 'Clean flexibility',
       },
     ],
-    title: 'Wind generation meets flexible storage',
+    title: 'Grid volatility meets flexible storage',
   },
   zh: {
     body:
-      '按 ON.energy WebGL 风格补回风电场景：风机、储能柜和并网线路在同一个互动场景里联动。',
-    eyebrow: 'WebGL 风电场',
-    metaDescription: '带风机、储能和并网线路的交互式风电场 WebGL 页面。',
-    metaTitle: '风电场 WebGL | 东亚电力',
+      '按下载的 ON.energy Grid Volatility 序列帧还原：市场压力、本地储能和灵活并网在同一个滚动叙事画面里浮现。',
+    eyebrow: 'Grid Volatility',
+    metaDescription: '使用下载素材还原的 Grid Volatility 滚动序列帧页面。',
+    metaTitle: 'Grid Volatility 序列帧 | 东亚电力',
     modes: [
       {
-        body: '风机以动态速度旋转，把清洁出力送入本地电网节点。',
-        label: '风电输入',
-        metric: '6 台风机',
+        body: '负荷增长快于新增输电能力，画面保持黑底、低饱和建筑体块和黄色警示光，贴近原站下载序列帧的紧张感。',
+        label: '挑战 1',
+        metric: '波动市场',
       },
       {
-        body: '储能系统吸收风功率波动，转移富余电力，让输出更可调度。',
-        label: '储能缓冲',
-        metric: '300 MWh',
+        body: '分布式储能靠近负荷布置，吸收富余电量，并在电网紧张时释放，缓解局部拥堵。',
+        label: '方案 1',
+        metric: '本地储能',
       },
       {
-        body: '并网线路把风机、储能和升压站组织成一个可响应的灵活性区域。',
-        label: '并网输出',
-        metric: '99.8%',
+        body: '储能与电网节点被组织成可响应的灵活性区域，把波动性发电转化成更可靠的输出。',
+        label: '方案 2',
+        metric: '清洁灵活性',
       },
     ],
-    title: '风电出力与灵活储能协同',
+    title: '电网波动与灵活储能协同',
   },
 }
 
