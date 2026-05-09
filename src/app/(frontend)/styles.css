@@ -3175,7 +3175,7 @@ body.grid-volatility-active .site-header {
 
   .statement-card {
     min-height: 78svh;
-    padding: 28px 22px;
+    padding: 28px 22px 104px;
   }
 
   .statement-label {
@@ -3188,8 +3188,11 @@ body.grid-volatility-active .site-header {
   }
 
   .statement-section p {
-    font-size: clamp(34px, 10vw, 52px);
-    line-height: 1.02;
+    font-family: var(--font-body);
+    font-size: clamp(21px, 5.1vw, 30px);
+    font-weight: 500;
+    line-height: 1.28;
+    margin-top: 22px;
   }
 
   .statement-section ul {
@@ -3213,7 +3216,7 @@ body.grid-volatility-active .site-header {
   }
 
   .grid-info-card {
-    gap: 20px;
+    gap: 0;
     min-height: 230px;
     padding: 22px;
     top: 92px;
@@ -3222,10 +3225,13 @@ body.grid-volatility-active .site-header {
 
   .grid-info-card h2 {
     font-size: clamp(28px, 8vw, 38px);
+    margin-top: 22px;
   }
 
   .grid-info-card p {
     font-size: 15px;
+    line-height: 1.55;
+    margin-top: 14px;
   }
 
   .grid-capacity-card {
