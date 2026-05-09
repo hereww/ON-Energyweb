@@ -158,7 +158,12 @@ const CITY_TEXTURE_PATHS = {
   },
 } as const
 
-const CITY_CAMERA_START: MotionPathPoint = { key: 'Camera_01_city_01', zoom: 4, duration: 0, hold: 0 }
+const CITY_CAMERA_START: MotionPathPoint = {
+  key: 'Camera_01_city_01',
+  zoom: 4,
+  duration: 0,
+  hold: 0,
+}
 const CITY_CAMERA_PATH: MotionPathPoint[] = [
   { key: 'Camera_01_city_01', zoom: 8, duration: 1, hold: 0 },
   { key: 'Camera_01_city_01', zoom: 12, duration: 6, hold: 0 },
@@ -191,7 +196,16 @@ const CITY_CAR_ROUTES = [
     'waypoint016',
     'waypoint017',
   ],
-  ['waypoint018', 'waypoint019', 'waypoint020', 'waypoint021', 'waypoint022', 'waypoint023', 'waypoint024', 'waypoint025'],
+  [
+    'waypoint018',
+    'waypoint019',
+    'waypoint020',
+    'waypoint021',
+    'waypoint022',
+    'waypoint023',
+    'waypoint024',
+    'waypoint025',
+  ],
 ]
 // The left approach road is a road mesh only, without waypoint helper nodes in the GLB.
 const CITY_CAR_STATIC_ROUTES = [
@@ -271,7 +285,9 @@ const CITY_BATTERY_SETS = [
 
 const CITY_WIND_SOLAR_BATTERIES = new Set(CITY_BATTERY_SETS[0].map(normalizeName))
 const CITY_ISOLATED_BATTERIES = new Set(CITY_BATTERY_SETS[3].map(normalizeName))
-const CITY_POWERLINE_KEYS = new Set(['line', 'line002', 'line003', 'line005', 'line006', 'line008', 'line010'].map(normalizeName))
+const CITY_POWERLINE_KEYS = new Set(
+  ['line', 'line002', 'line003', 'line005', 'line006', 'line008', 'line010'].map(normalizeName),
+)
 const CITY_HIDDEN_POWERLINES = new Set(['line002', 'line003'].map(normalizeName))
 const CITY_FORCE_BASIC_COLOR_KEYS = new Set(['ROAD_COLOR:D4D4D4'].map(normalizeName))
 const CITY_CAR_ROUTE_SNAP_MAX_DISTANCE = 1
@@ -280,7 +296,10 @@ const CITY_POWERLINE_MESH_CONFIG = new Map(
   [
     ['line002', { depthWrite: true, direction: -1, yOffset: 0.001 }],
     ['line005', { depthWrite: true, direction: -1, yOffset: 0 }],
-  ].map(([key, config]) => [normalizeName(key as string), config as { depthWrite: boolean; direction: number; yOffset: number }]),
+  ].map(([key, config]) => [
+    normalizeName(key as string),
+    config as { depthWrite: boolean; direction: number; yOffset: number },
+  ]),
 )
 const CITY_CLOSEUP_HIGH_CELLS = new Set(['Cubes_yellow'].map(normalizeName))
 const CITY_CLOSEUP_LOW_CELLS = new Set(['cubes_green'].map(normalizeName))
@@ -418,15 +437,6 @@ const POWERLINE_FRAGMENT_SHADER = `
   }
 `
 
-const pinPositions = [
-  { x: 79, y: 77 },
-  { x: 57, y: 45 },
-  { x: 50, y: 43 },
-  { x: 63, y: 52 },
-  { x: 70, y: 56 },
-  { x: 72, y: 58 },
-]
-
 const originalVisibleRanges = [
   [0.0512472380050505, 0.12776238952020202],
   [0.13730784406565658, 0.2658431976010101],
@@ -563,7 +573,11 @@ function getCameraProgressFromScroll(progress: number, stepCount: number) {
     const nextCamera = CAMERA_PROGRESS_BY_STEP[index + 1] ?? currentCamera
 
     if (progress <= nextScroll) {
-      let localProgress = clamp((progress - currentScroll) / Math.max(0.0001, nextScroll - currentScroll), 0, 1)
+      let localProgress = clamp(
+        (progress - currentScroll) / Math.max(0.0001, nextScroll - currentScroll),
+        0,
+        1,
+      )
 
       if (index === 0) {
         if (localProgress < CAMERA_ENTRY_TRANSITION_START) {
@@ -571,7 +585,8 @@ function getCameraProgressFromScroll(progress: number, stepCount: number) {
         }
 
         localProgress = clamp(
-          (localProgress - CAMERA_ENTRY_TRANSITION_START) / Math.max(0.0001, 1 - CAMERA_ENTRY_TRANSITION_START),
+          (localProgress - CAMERA_ENTRY_TRANSITION_START) /
+            Math.max(0.0001, 1 - CAMERA_ENTRY_TRANSITION_START),
           0,
           1,
         )
@@ -581,7 +596,8 @@ function getCameraProgressFromScroll(progress: number, stepCount: number) {
         }
 
         localProgress = clamp(
-          (localProgress - CAMERA_SCARCITY_TRANSITION_START) / Math.max(0.0001, 1 - CAMERA_SCARCITY_TRANSITION_START),
+          (localProgress - CAMERA_SCARCITY_TRANSITION_START) /
+            Math.max(0.0001, 1 - CAMERA_SCARCITY_TRANSITION_START),
           0,
           1,
         )
@@ -591,7 +607,8 @@ function getCameraProgressFromScroll(progress: number, stepCount: number) {
         }
 
         localProgress = clamp(
-          (localProgress - CAMERA_FINAL_TRANSITION_START) / Math.max(0.0001, 1 - CAMERA_FINAL_TRANSITION_START),
+          (localProgress - CAMERA_FINAL_TRANSITION_START) /
+            Math.max(0.0001, 1 - CAMERA_FINAL_TRANSITION_START),
           0,
           1,
         )
@@ -602,7 +619,11 @@ function getCameraProgressFromScroll(progress: number, stepCount: number) {
           return currentCamera
         }
 
-        localProgress = clamp((localProgress - STORAGE_INSERT_END) / Math.max(0.0001, 1 - STORAGE_INSERT_END), 0, 1)
+        localProgress = clamp(
+          (localProgress - STORAGE_INSERT_END) / Math.max(0.0001, 1 - STORAGE_INSERT_END),
+          0,
+          1,
+        )
       }
 
       return currentCamera + (nextCamera - currentCamera) * easeInOutQuad(localProgress)
@@ -627,7 +648,10 @@ function getStorageScrollPhase(progress: number, stepCount: number) {
   return clamp((progress - storageScroll) / Math.max(0.0001, windScroll - storageScroll), 0, 1)
 }
 
-function getStorageChargeOverlayState(progress: number, stepCount: number): StorageChargeOverlayState {
+function getStorageChargeOverlayState(
+  progress: number,
+  stepCount: number,
+): StorageChargeOverlayState {
   const storagePhase = getStorageScrollPhase(progress, stepCount)
 
   if (storagePhase === null || storagePhase >= STORAGE_INSERT_END) {
@@ -682,7 +706,8 @@ function setMeshMaterialColor(mesh: THREE.Mesh, color: string, opacity = 1, forc
   const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material]
 
   materials.forEach((material, index) => {
-    const textureMap = 'map' in material && material.map instanceof THREE.Texture ? material.map : null
+    const textureMap =
+      'map' in material && material.map instanceof THREE.Texture ? material.map : null
     const nextMaterial =
       forceBasic || material instanceof THREE.MeshBasicMaterial
         ? new THREE.MeshBasicMaterial({
@@ -775,7 +800,8 @@ function setCityBakedToneMaterial(mesh: THREE.Mesh) {
 
   materials.forEach((material, index) => {
     const texture = getMaterialTexture(material)
-    const opacity = 'opacity' in material && typeof material.opacity === 'number' ? material.opacity : 1
+    const opacity =
+      'opacity' in material && typeof material.opacity === 'number' ? material.opacity : 1
     const nextMaterial = texture
       ? createCityBakedToneMaterial(texture, opacity)
       : new THREE.MeshBasicMaterial({
@@ -977,9 +1003,19 @@ function buildCameraRail(root: THREE.Object3D, center: THREE.Vector3): CameraRai
 
   return {
     duration,
-    positionCurve: new THREE.CatmullRomCurve3(createCurvePoints(positionPoints), false, 'centripetal', 0.5),
+    positionCurve: new THREE.CatmullRomCurve3(
+      createCurvePoints(positionPoints),
+      false,
+      'centripetal',
+      0.5,
+    ),
     segments,
-    targetCurve: new THREE.CatmullRomCurve3(createCurvePoints(targetPoints), false, 'centripetal', 0.5),
+    targetCurve: new THREE.CatmullRomCurve3(
+      createCurvePoints(targetPoints),
+      false,
+      'centripetal',
+      0.5,
+    ),
     timeline,
   }
 }
@@ -1026,7 +1062,10 @@ function sampleCameraRail(progress: number, rail: CameraRail) {
   }
 }
 
-function getClosestRouteMatch(position: THREE.Vector3, routes: THREE.Vector3[][]): CarRouteMatch | null {
+function getClosestRouteMatch(
+  position: THREE.Vector3,
+  routes: THREE.Vector3[][],
+): CarRouteMatch | null {
   let bestMatch: CarRouteMatch | null = null
 
   routes.forEach((route) => {
@@ -1049,8 +1088,16 @@ function getClosestRouteMatch(position: THREE.Vector3, routes: THREE.Vector3[][]
         continue
       }
 
-      const t = clamp(((position.x - start.x) * segment.x + (position.z - start.z) * segment.z) / segmentLengthSq, 0, 1)
-      const point = new THREE.Vector3(start.x + segment.x * t, start.y + (end.y - start.y) * t, start.z + segment.z * t)
+      const t = clamp(
+        ((position.x - start.x) * segment.x + (position.z - start.z) * segment.z) / segmentLengthSq,
+        0,
+        1,
+      )
+      const point = new THREE.Vector3(
+        start.x + segment.x * t,
+        start.y + (end.y - start.y) * t,
+        start.z + segment.z * t,
+      )
       const deltaX = point.x - position.x
       const deltaZ = point.z - position.z
       const distance = Math.sqrt(deltaX * deltaX + deltaZ * deltaZ)
@@ -1178,7 +1225,11 @@ function createPowerlineMaterial(name: string, mesh: THREE.Mesh): PowerlineMater
   return material
 }
 
-function createCarMover(object: THREE.Object3D, routes: THREE.Vector3[][], index: number): CarMover | null {
+function createCarMover(
+  object: THREE.Object3D,
+  routes: THREE.Vector3[][],
+  index: number,
+): CarMover | null {
   const routeMatch = getClosestRouteMatch(object.position, routes)
 
   if (!routeMatch) {
@@ -1361,7 +1412,14 @@ export function WebGLGridExperience({
     scene.fog = null
 
     const cameraFrustum = 50
-    const camera = new THREE.OrthographicCamera(-cameraFrustum / 2, cameraFrustum / 2, cameraFrustum / 2, -cameraFrustum / 2, 0.1, 1000)
+    const camera = new THREE.OrthographicCamera(
+      -cameraFrustum / 2,
+      cameraFrustum / 2,
+      cameraFrustum / 2,
+      -cameraFrustum / 2,
+      0.1,
+      1000,
+    )
     const ambient = new THREE.HemisphereLight(0xffffff, 0xffffff, 1.2)
     const keyLight = new THREE.DirectionalLight(0xffffff, 0)
     const fillLight = new THREE.DirectionalLight(0xffffff, 0)
@@ -1429,7 +1487,8 @@ export function WebGLGridExperience({
       applyStorageOverlayProgress(storageProgressRef.current)
       setStepFromProgress(progress)
 
-      const isActive = rect.top < window.innerHeight * 0.92 && rect.bottom > window.innerHeight * 0.08
+      const isActive =
+        rect.top < window.innerHeight * 0.92 && rect.bottom > window.innerHeight * 0.08
       document.body.classList.toggle('grid-volatility-active', isActive)
     }
 
@@ -1562,7 +1621,12 @@ export function WebGLGridExperience({
             normalizedName.includes('CUBESYELLOWOUTLINE') ||
             normalizedName.includes('CUBESGREENOUTLINE')
           const color = isCloseupSoftOutline ? '#b8b8b8' : namedColor
-          setMeshMaterialColor(child, color, normalizedName.includes('OUTLINES') ? 1 : 0.96, CITY_FORCE_BASIC_COLOR_KEYS.has(normalizedName))
+          setMeshMaterialColor(
+            child,
+            color,
+            normalizedName.includes('OUTLINES') ? 1 : 0.96,
+            CITY_FORCE_BASIC_COLOR_KEYS.has(normalizedName),
+          )
           return
         }
 
@@ -1595,7 +1659,10 @@ export function WebGLGridExperience({
       const cells: StorageCellRuntime[] = []
 
       root.traverse((child) => {
-        if (!(child instanceof THREE.Mesh) || !CITY_CLOSEUP_HIGH_CELLS.has(normalizeName(child.name))) {
+        if (
+          !(child instanceof THREE.Mesh) ||
+          !CITY_CLOSEUP_HIGH_CELLS.has(normalizeName(child.name))
+        ) {
           return
         }
 
@@ -1624,12 +1691,12 @@ export function WebGLGridExperience({
 
       const cameraObject = getFirstNamedObject(root, CITY_CLOSEUP_CAMERA_KEY)
       const cameraNode = cameraObject instanceof THREE.Camera ? cameraObject : null
-      const arrowIcons = CITY_CLOSEUP_ARROW_KEYS.map((key) => getFirstNamedObject(root, key)).filter(
-        (object): object is THREE.Object3D => Boolean(object),
-      ).map(createStorageObjectRuntime)
-      const powerIcons = CITY_CLOSEUP_POWER_KEYS.map((key) => getFirstNamedObject(root, key)).filter(
-        (object): object is THREE.Object3D => Boolean(object),
-      ).map(createStorageObjectRuntime)
+      const arrowIcons = CITY_CLOSEUP_ARROW_KEYS.map((key) => getFirstNamedObject(root, key))
+        .filter((object): object is THREE.Object3D => Boolean(object))
+        .map(createStorageObjectRuntime)
+      const powerIcons = CITY_CLOSEUP_POWER_KEYS.map((key) => getFirstNamedObject(root, key))
+        .filter((object): object is THREE.Object3D => Boolean(object))
+        .map(createStorageObjectRuntime)
       const lineObjects = getNamedObjects(root, ['line.001']).map(createStorageObjectRuntime)
       const yellowCells = collectStorageCells(closeupRoot)
 
@@ -1701,7 +1768,10 @@ export function WebGLGridExperience({
     }
 
     function positionCamera(progress: number) {
-      const storageOverlay = getStorageChargeOverlayState(storageProgressRef.current, sceneSteps.length)
+      const storageOverlay = getStorageChargeOverlayState(
+        storageProgressRef.current,
+        sceneSteps.length,
+      )
       const closeupRuntime = storageCloseupRuntime
 
       if (closeupRuntime?.camera && storageOverlay.closeup > 0.01) {
@@ -1765,13 +1835,15 @@ export function WebGLGridExperience({
       closeupRuntime.root.quaternion.copy(closeupRuntime.rootQuaternion)
       closeupRuntime.root.scale.copy(closeupRuntime.rootScale)
 
-      closeupRuntime.yellowCells.forEach(({ material, mesh, originalPosition, originalQuaternion, originalScale }) => {
-        mesh.position.copy(originalPosition)
-        mesh.quaternion.copy(originalQuaternion)
-        mesh.scale.copy(originalScale)
-        material.uniforms.uFill.value = charge
-        material.uniforms.uPulse.value = charge > 0.02 && charge < 0.98 ? pulse : 0
-      })
+      closeupRuntime.yellowCells.forEach(
+        ({ material, mesh, originalPosition, originalQuaternion, originalScale }) => {
+          mesh.position.copy(originalPosition)
+          mesh.quaternion.copy(originalQuaternion)
+          mesh.scale.copy(originalScale)
+          material.uniforms.uFill.value = charge
+          material.uniforms.uPulse.value = charge > 0.02 && charge < 0.98 ? pulse : 0
+        },
+      )
 
       closeupRuntime.arrowIcons.forEach((runtime, index) => {
         restoreStorageObject(runtime)
@@ -1802,7 +1874,8 @@ export function WebGLGridExperience({
         battery.object.visible = !battery.initiallyHidden || reveal > 0.02
 
         if (battery.initiallyHidden) {
-          battery.object.position.y = -1 + (battery.originalY + 1) * clamp(reveal - index * 0.004, 0, 1)
+          battery.object.position.y =
+            -1 + (battery.originalY + 1) * clamp(reveal - index * 0.004, 0, 1)
         } else {
           battery.object.position.y = battery.originalY
         }
@@ -1827,7 +1900,8 @@ export function WebGLGridExperience({
 
     function updatePowerlines(delta: number, progress: number) {
       const earlyGood = clamp((progress - 0.18) * 8, 0, 1)
-      const closeupBad = clamp((progress - 0.58) * 8, 0, 1) * (1 - clamp((progress - 0.89) * 12, 0, 1))
+      const closeupBad =
+        clamp((progress - 0.58) * 8, 0, 1) * (1 - clamp((progress - 0.89) * 12, 0, 1))
       const finalGood = clamp((progress - 0.9) * 10, 0, 1)
       const goodAmount = clamp(Math.max(earlyGood * (1 - closeupBad), finalGood), 0, 1)
 
@@ -1837,8 +1911,12 @@ export function WebGLGridExperience({
         line.material.uniforms.uTime.value += delta
         line.material.uniforms.uTransition.value = hiddenReveal
         line.material.uniforms.uSpeed.value = POWERLINE_BAD.speed + goodAmount * 0.2
-        line.material.uniforms.uColor1.value.copy(POWERLINE_BAD.color1).lerp(POWERLINE_GOOD.color1, goodAmount)
-        line.material.uniforms.uColor2.value.copy(POWERLINE_BAD.color2).lerp(POWERLINE_GOOD.color2, goodAmount)
+        line.material.uniforms.uColor1.value
+          .copy(POWERLINE_BAD.color1)
+          .lerp(POWERLINE_GOOD.color1, goodAmount)
+        line.material.uniforms.uColor2.value
+          .copy(POWERLINE_BAD.color2)
+          .lerp(POWERLINE_GOOD.color2, goodAmount)
       })
     }
 
@@ -1852,8 +1930,18 @@ export function WebGLGridExperience({
       lastFrameTime = now
       const progress = progressRef.current
       const scrollCameraProgress = getCameraProgressFromScroll(progress, sceneSteps.length)
-      const cameraProgress = exponentialDamp(cameraProgressRef.current, scrollCameraProgress, CAMERA_EASING_STIFFNESS, delta)
-      const storageProgress = exponentialDamp(storageProgressRef.current, progress, STORAGE_PROGRESS_STIFFNESS, delta)
+      const cameraProgress = exponentialDamp(
+        cameraProgressRef.current,
+        scrollCameraProgress,
+        CAMERA_EASING_STIFFNESS,
+        delta,
+      )
+      const storageProgress = exponentialDamp(
+        storageProgressRef.current,
+        progress,
+        STORAGE_PROGRESS_STIFFNESS,
+        delta,
+      )
       cameraProgressRef.current = cameraProgress
       storageProgressRef.current = storageProgress
       applyStorageOverlayProgress(storageProgress)
@@ -1976,10 +2064,7 @@ export function WebGLGridExperience({
 
   const active = sceneSteps[activeStep] ?? sceneSteps[0]
   const displayActive = active
-  const pin = pinPositions[activeStep] ?? pinPositions[0]
   const sceneStyle = {
-    '--pin-x': `${pin?.x ?? 58}%`,
-    '--pin-y': `${pin?.y ?? 45}%`,
     '--storage-charge-progress': 0,
     '--storage-closeup-progress': 0,
   } as CSSProperties
@@ -2057,14 +2142,6 @@ export function WebGLGridExperience({
         />
         <div className="grid-scene-wash" aria-hidden="true" />
 
-        <div className={`webgl-map-pin ${displayActive.kind}`}>
-          <span className="power-status-icon" aria-hidden="true">
-            <i />
-            <b />
-          </span>
-          <span>{displayActive.number}</span>
-        </div>
-
         <div className={`grid-info-card ${displayActive.kind}`} aria-live="polite">
           <div className="grid-info-kicker">
             <span aria-hidden="true" />
@@ -2118,7 +2195,10 @@ export function WebGLGridExperience({
 
         <div className="webgl-step-rail" aria-hidden="true">
           {sceneSteps.map((step, index) => (
-            <span className={activeStep === index ? 'is-active' : ''} key={`${step.kind}-${step.number}`} />
+            <span
+              className={activeStep === index ? 'is-active' : ''}
+              key={`${step.kind}-${step.number}`}
+            />
           ))}
         </div>
 

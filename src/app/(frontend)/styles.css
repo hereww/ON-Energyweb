@@ -3009,7 +3009,11 @@ body.grid-volatility-active .site-header {
   .deployment-stats div {
     border-left: 0;
     border-top: 1px solid var(--line);
-    padding: 18px 0;
+    padding: 22px 24px;
+  }
+
+  .deployment-stats {
+    padding: 10px 0;
   }
 
   .deployment-feature {
